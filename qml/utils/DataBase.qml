@@ -7,6 +7,46 @@ Item {
 
     property variant record
 
+    property string currency
+    property string language
+    property bool showHints: true
+    property bool convertCurrency: false
+
+    Component.onCompleted: {
+        initDatabase()
+
+        var currencyIndex = getName("currency")
+        if (currencyIndex) {
+            currency = currencyIndex.toLowerCase()
+        } else {
+            storeData("currency", 1, "EUR")
+        }
+        var languageIndex = getName("language")
+        if (languageIndex) {
+            language = languageIndex.toLowerCase()
+        } else {
+            storeData("language", 0, "EN")
+        }
+        var _showHints = getName("hints")
+        if (_showHints) {
+            if (_showHints == "false") {
+                showHints = false
+            }
+        } else {
+            storeData("hints", "true", "true")
+        }
+        var convert = getName("convert")
+        if (convert) {
+            if (convert == "false") {
+                convertCurrency = false
+            } else {
+                convertCurrency = true
+            }
+        } else {
+            database.storeData("convert", "false", "false")
+        }
+    }
+
     function initDatabase() {
         // initialize the database object
         console.log('initDatabase()')

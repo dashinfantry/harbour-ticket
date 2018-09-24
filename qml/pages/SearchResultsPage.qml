@@ -1,7 +1,9 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
 
-import "Utils.js" as Utils
+import "../utils/Utils.js" as Utils
+
+import "../utils"
 
 Page {
     property bool showMainView: false

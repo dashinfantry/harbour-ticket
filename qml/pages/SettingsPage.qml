@@ -1,6 +1,8 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
+import "../utils"
+
 Page {
     id: settingsPage
     orientation: Orientation.Portrait
@@ -10,41 +12,10 @@ Page {
     }
 
     Component.onCompleted: {
-        database.initDatabase()
-        var currencyIndex = database.getValue("currency")
-        if (currencyIndex) {
-            currency.currentIndex = currencyIndex
-        } else {
-            database.storeData("currency", 1, "EUR")
-        }
-        var languageIndex = database.getValue("language")
-        if (languageIndex) {
-            language.currentIndex = languageIndex
-        } else {
-            database.storeData("language", 0, "EN")
-        }
-        var convert = database.getName("convert")
-        if (convert) {
-            if (convert == "false") {
-                convertPrice.checked = false
-            } else {
-                convertPrice.checked = true
-            }
-        } else {
-            database.storeData("convert", "false", "false")
-        }
-
-        var showHints = database.getName("hints")
-        if (showHints) {
-            if (showHints == "false") {
-                hints.checked = false
-            } else {
-                hints.checked = true
-            }
-        } else {
-            database.storeData("hints", "true", "true")
-            hints.checked = true
-        }
+        currency.currentIndex = database.getValue("currency")
+        language.currentIndex = database.getValue("language")
+        convertPrice.checked = database.convertCurrency
+        hints.checked = database.showHints
     }
 
     Column {

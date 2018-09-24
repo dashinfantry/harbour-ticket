@@ -41,10 +41,8 @@ TRANSLATIONS += translations/harbour-ticket-el.ts
 
 DISTFILES += \
     qml/pages/StartPage.qml \
-    qml/pages/Utils.js \
     qml/pages/TicketInfoDelegate.qml \
     qml/pages/SettingsPage.qml \
-    qml/pages/DataBase.qml \
     qml/pages/AboutPage.qml \
     qml/pages/FavoritesPage.qml \
     qml/pages/TicketPage.qml \
@@ -52,4 +50,6 @@ DISTFILES += \
     qml/pages/WebPage.qml \
     qml/delegates/FavoritesDelegate.qml \
     qml/pages/AirlinesOffers.qml \
-    qml/delegates/StartScreenItem.qml
+    qml/delegates/StartScreenItem.qml \
+    qml/utils/Utils.js \
+    qml/utils/DataBase.qml

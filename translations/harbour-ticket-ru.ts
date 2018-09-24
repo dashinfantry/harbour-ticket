@@ -12,7 +12,7 @@
     <name>FavoritesDelegate</name>
     <message>
         <source>Departure: </source>
-        <translation type="unfinished">Отправление</translation>
+        <translation>Отправление: </translation>
     </message>
 </context>
 <context>
@@ -185,6 +185,26 @@
     </message>
     <message>
         <source>Adults count</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>One way search</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Round trip search</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Round trip</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Complex search</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fly with more than two stops</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

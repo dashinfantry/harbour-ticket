@@ -1,7 +1,8 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
 
-import "Utils.js" as Utils
+import "../utils/Utils.js" as Utils
+import "../utils"
 
 Page {
     id: ticketPage
@@ -96,15 +97,6 @@ Page {
     }
 
     Component.onCompleted: {
-//        database.initDatabase()
-//        var languageIndex = database.getName("language")
-//        if (languageIndex) {
-//            language = languageIndex.toLowerCase()
-//        } else {
-//            database.storeData("language", 0, "EN")
-//        }
-//        var url = "http://nano.aviasales.ru/places/top_" + language + ".json"
-//        Utils.performRequest("GET", url, getAirportsInfo)
         var terms = Object.keys(ticket.terms)
         for (var a in terms) {
             var term = ticket.terms[terms[a]]

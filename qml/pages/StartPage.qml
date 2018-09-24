@@ -1,8 +1,9 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
 
-import "Utils.js" as Utils
+import "../utils/Utils.js" as Utils
 
+import "../utils"
 import "../delegates"
 
 Page {
@@ -70,34 +71,41 @@ Page {
 
     Component.onCompleted: {
         app.newSearch.connect(startNewSearch)
-        database.initDatabase()
 
         getFavorites()
 
-        var currencyIndex = database.getName("currency")
-        if (currencyIndex) {
-            currency = currencyIndex.toLowerCase()
-        } else {
-            database.storeData("currency", 1, "EUR")
-        }
-        var languageIndex = database.getName("language")
-        if (languageIndex) {
-            language = languageIndex.toLowerCase()
-        } else {
-            database.storeData("language", 0, "EN")
-        }
-        var showHints = database.getName("hints")
-        if (showHints) {
-            if (showHints == "false") {
-                hint.visible = false
-                hint.running = false
-            }
-        } else {
-            database.storeData("hints", "true", "true")
-        }
+        currency = database.currency
+        language = database.language
+
+        hint.visible = database.showHints
+        hint.running = database.showHints
 
         Utils.performRequest("GET", Utils.getMyIpUrl, getCurrentIp)
     }
+
+    ListModel {
+        id: searchTypesList
+
+        ListElement {
+            type: "simple"
+            name: qsTr("One way search")
+            descr: qsTr("One way ticket")
+            image: "image://theme/icon-m-home"
+        }
+        ListElement {
+            type: "return"
+            name: qsTr("Round trip search")
+            descr: qsTr("Round trip")
+            image: "image://theme/icon-m-location"
+        }
+        ListElement {
+            type: "complex"
+            name: qsTr("Complex search")
+            descr: qsTr("Fly with more than two stops")
+            image: "image://theme/icon-m-gps"
+        }
+    }
+
 
     function getFavorites() {
         var favorites = database.getFavorites()
@@ -241,12 +249,32 @@ Page {
             }
         }
 
+        ListView {
+            id: searchTypes
+
+            anchors.top: head.bottom
+            height: (Theme.itemSizeMedium + Theme.paddingMedium) * searchTypesList.count
+            width: parent.width
+            spacing: Theme.paddingMedium
+            interactive: false
+            model: searchTypesList
+            delegate: IconTextSwitch {
+                automaticCheck: false
+                text: name
+                icon.source: image
+                description: descr
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("SearchPage.qml"), {searchType: type})
+                }
+            }
+
+        }
 
         //*** FAVORITES ***
         SilicaListView {
             id: favoritesListView
 
-            anchors { top: head.bottom; left: parent.left; right: parent.right; bottom: offers.top }
+            anchors { top: searchTypes.bottom; left: parent.left; right: parent.right; bottom: offers.top }
             spacing: Theme.paddingSmall
             clip: true
             visible: !busyIndicator.running
@@ -457,7 +485,6 @@ Page {
                     Column {
                         width: parent.width
                         DialogHeader {
-//                            title: qsTr("Search tickets:")
                             acceptText: qsTr("Search")
                             cancelText: qsTr("Cancel")
                         }
