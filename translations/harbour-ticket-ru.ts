@@ -16,6 +16,80 @@
     </message>
 </context>
 <context>
+    <name>SearchAirportDialog</name>
+    <message>
+        <source>Search airports:</source>
+        <translation type="unfinished">Поиск аэропортов:</translation>
+    </message>
+    <message>
+        <source>No airports found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter airport/city name</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SearchDialog</name>
+    <message>
+        <source>Search</source>
+        <translation type="unfinished">Поиск</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Отмена</translation>
+    </message>
+    <message>
+        <source>Origin:</source>
+        <translation type="unfinished">Откуда:</translation>
+    </message>
+    <message>
+        <source>Destination:</source>
+        <translation type="unfinished">Куда:</translation>
+    </message>
+    <message>
+        <source>Departure date:</source>
+        <translation type="unfinished">Дата вылета:</translation>
+    </message>
+    <message>
+        <source>One way ticket</source>
+        <translation type="unfinished">Билет в один конец</translation>
+    </message>
+    <message>
+        <source>Return date:</source>
+        <translation type="unfinished">Дата возвращения:</translation>
+    </message>
+    <message>
+        <source>Adults count</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Without transfer</source>
+        <translation type="unfinished">Без пересадок</translation>
+    </message>
+    <message>
+        <source>Seat class:</source>
+        <translation type="unfinished">Место:</translation>
+    </message>
+    <message>
+        <source>Econom class</source>
+        <translation type="unfinished">Эконом класс</translation>
+    </message>
+    <message>
+        <source>Busines class</source>
+        <translation type="unfinished">Бизнесс класс</translation>
+    </message>
+    <message>
+        <source>Select</source>
+        <translation type="unfinished">Выбрать</translation>
+    </message>
+    <message>
+        <source>Childrens count</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SearchResultsPage</name>
     <message>
         <source>Search</source>
@@ -108,32 +182,8 @@
 <context>
     <name>StartPage</name>
     <message>
-        <source>Econom class</source>
-        <translation>Эконом класс</translation>
-    </message>
-    <message>
-        <source>Busines class</source>
-        <translation>Бизнесс класс</translation>
-    </message>
-    <message>
         <source>Avia tickets</source>
         <translation>Авиа билеты</translation>
-    </message>
-    <message>
-        <source>Search</source>
-        <translation>Поиск</translation>
-    </message>
-    <message>
-        <source>Origin:</source>
-        <translation>Откуда:</translation>
-    </message>
-    <message>
-        <source>Destination:</source>
-        <translation>Куда:</translation>
-    </message>
-    <message>
-        <source>Departure date:</source>
-        <translation>Дата вылета:</translation>
     </message>
     <message>
         <source>Select</source>
@@ -144,32 +194,12 @@
         <translation>Билет в один конец</translation>
     </message>
     <message>
-        <source>Without transfer</source>
-        <translation>Без пересадок</translation>
-    </message>
-    <message>
-        <source>Return date:</source>
-        <translation>Дата возвращения:</translation>
-    </message>
-    <message>
-        <source>Search airports:</source>
-        <translation>Поиск аэропортов:</translation>
-    </message>
-    <message>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
         <source>Settings</source>
         <translation>Настройки</translation>
-    </message>
-    <message>
-        <source>Seat class:</source>
-        <translation>Место:</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Отмена</translation>
     </message>
     <message>
         <source>Pull down and select Search</source>
@@ -182,10 +212,6 @@
     <message>
         <source>Search history</source>
         <translation>История поиска</translation>
-    </message>
-    <message>
-        <source>Adults count</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>One way search</source>

@@ -16,6 +16,80 @@
     </message>
 </context>
 <context>
+    <name>SearchAirportDialog</name>
+    <message>
+        <source>Search airports:</source>
+        <translation type="unfinished">Wyszukaj lotniska:</translation>
+    </message>
+    <message>
+        <source>No airports found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter airport/city name</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SearchDialog</name>
+    <message>
+        <source>Search</source>
+        <translation type="unfinished">Wyszukaj</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Origin:</source>
+        <translation type="unfinished">Miejsce wylotu:</translation>
+    </message>
+    <message>
+        <source>Destination:</source>
+        <translation type="unfinished">Cel:</translation>
+    </message>
+    <message>
+        <source>Departure date:</source>
+        <translation type="unfinished">Avgångsdatum:</translation>
+    </message>
+    <message>
+        <source>One way ticket</source>
+        <translation type="unfinished">Bilet w jedną stronę</translation>
+    </message>
+    <message>
+        <source>Return date:</source>
+        <translation type="unfinished">Data powrotu:</translation>
+    </message>
+    <message>
+        <source>Adults count</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Without transfer</source>
+        <translation type="unfinished">Bez przesiadek</translation>
+    </message>
+    <message>
+        <source>Seat class:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Econom class</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Busines class</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select</source>
+        <translation type="unfinished">Wybierz</translation>
+    </message>
+    <message>
+        <source>Childrens count</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SearchResultsPage</name>
     <message>
         <source>Sort by price: </source>
@@ -108,44 +182,16 @@
 <context>
     <name>StartPage</name>
     <message>
-        <source>Destination:</source>
-        <translation>Cel:</translation>
-    </message>
-    <message>
         <source>About</source>
         <translation>O AviaTicket</translation>
-    </message>
-    <message>
-        <source>Departure date:</source>
-        <translation>Avgångsdatum:</translation>
-    </message>
-    <message>
-        <source>Search airports:</source>
-        <translation>Wyszukaj lotniska:</translation>
     </message>
     <message>
         <source>One way ticket</source>
         <translation>Bilet w jedną stronę</translation>
     </message>
     <message>
-        <source>Search</source>
-        <translation>Wyszukaj</translation>
-    </message>
-    <message>
         <source>Select</source>
         <translation>Wybierz</translation>
-    </message>
-    <message>
-        <source>Return date:</source>
-        <translation>Data powrotu:</translation>
-    </message>
-    <message>
-        <source>Origin:</source>
-        <translation>Miejsce wylotu:</translation>
-    </message>
-    <message>
-        <source>Without transfer</source>
-        <translation>Bez przesiadek</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -154,14 +200,6 @@
     <message>
         <source>Avia tickets</source>
         <translation>Avia tickets</translation>
-    </message>
-    <message>
-        <source>Econom class</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Busines class</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Search history</source>
@@ -173,18 +211,6 @@
     </message>
     <message>
         <source>Pull down and select Search</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Seat class:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Adults count</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

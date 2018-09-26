@@ -7,7 +7,7 @@ import "../utils"
 import "../delegates"
 
 Page {
-    id: searchPage
+    id: root
     orientation: Orientation.Portrait
 
     property bool showDialog: false
@@ -36,8 +36,6 @@ Page {
     property bool returnDateValueIsSet: false
 
 
-    property bool loadData: false
-    property bool finishSearching: false
     property bool showMainView: false
     property variant currentSearch: ({})
 
@@ -70,10 +68,8 @@ Page {
     }
 
     Component.onCompleted: {
-        app.newSearch.connect(startNewSearch)
 
-        getFavorites()
-
+//        database.deleteFavorites()
         currency = database.currency
         language = database.language
 
@@ -121,10 +117,6 @@ Page {
         }
     }
 
-    function startNewSearch() {
-        pageStack.push(firstWizardPage)
-    }
-
     function saveFavorites(data) {
         for (var i in data) {
             //
@@ -135,7 +127,7 @@ Page {
 
     function getCurrentIp(data) {
         if(data !== "error") {
-            app.newSearchAllowed = true
+            app.newSearchAllowed = false
 //            var ipAddr = JSON.parse(data)
 //            var url = "http://www.travelpayouts.com/whereami?locale=ru&ip=" + ipAddr.ip
 
@@ -149,9 +141,6 @@ Page {
 
             var url = "http://nano.aviasales.ru/places/top_" + language + ".json"
             Utils.performRequest("GET", url, getAirportsInfo)
-
-            classSeatsModel.append({"name": qsTr("Econom class"), "seat": "Y"})
-            classSeatsModel.append({"name": qsTr("Busines class"), "seat": "C"})
         }
     }
 
@@ -165,25 +154,26 @@ Page {
                 }
             }
             app.airportsInfo = _airportsInfo
+            getFavorites()
 
             busyIndicator.running = false
         }
     }
 
-    function getCityInfo(data) {
-        if (data !== "error") {
-            var parsed = JSON.parse(data)
-            if (Object.keys(parsed).length > 0) {
-                airportsModel.append(parsed)
-            }
-        }
-        loadData = false
-        finishSearching = true
-    }
+//    function getCityInfo(data) {
+//        if (data !== "error") {
+//            var parsed = JSON.parse(data)
+//            if (Object.keys(parsed).length > 0) {
+//                airportsModel.append(parsed)
+//            }
+//        }
+//        loadData = false
+//        finishSearching = true
+//    }
 
-    function getName(iata) {
-        return airportsInfo[iata].name
-    }
+//    function getName(iata) {
+//        return airportsInfo[iata].name
+//    }
 
     function showResults(data) {
         if (data !== "error") {
@@ -196,14 +186,6 @@ Page {
                 Utils.performRequest("GET", url, getResults)
             }
         }
-    }
-
-    ListModel {
-        id: classSeatsModel
-    }
-
-    ListModel {
-        id: airportsModel
     }
 
     ListModel {
@@ -240,13 +222,13 @@ Page {
                     pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
                 }
             }
-            MenuItem {
-                text: qsTr("Search")
-                onClicked: {
-                    app.newSearchAllowed = false
-                    pageStack.push(firstWizardPage)
-                }
-            }
+//            MenuItem {
+//                text: qsTr("Search")
+//                onClicked: {
+//                    app.newSearchAllowed = false
+//                    pageStack.push(Qt.resolvedUrl("../delegates/SearchDialog.qml"), {currentIp: root.currentIp})
+//                }
+//            }
         }
 
         ListView {
@@ -264,7 +246,8 @@ Page {
                 icon.source: image
                 description: descr
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl("SearchPage.qml"), {searchType: type})
+                    var oneway = type === "simple"
+                    pageStack.push(Qt.resolvedUrl("../delegates/SearchDialog.qml"), {currentIp: root.currentIp, oneWay: oneway})
                 }
             }
 
@@ -293,10 +276,10 @@ Page {
                 departureDate: fav_departureDate
 
                 onClicked: {
-                    searchPage.origin = fav_origin
-                    searchPage.originText = app.airportsInfo[fav_origin].name + " (" + fav_origin + ")"
-                    searchPage.destination = fav_destination
-                    searchPage.destinationText = app.airportsInfo[fav_destination].name + " (" + fav_destination + ")"
+                    root.origin = fav_origin
+                    root.originText = app.airportsInfo[fav_origin].name + " (" + fav_origin + ")"
+                    root.destination = fav_destination
+                    root.destinationText = app.airportsInfo[fav_destination].name + " (" + fav_destination + ")"
                     var currDate = new Date()
                     departureSelectedDate = new Date(fav_departureDate)
                     if (currDate > departureSelectedDate) {
@@ -306,7 +289,8 @@ Page {
                     departureDateValueIsSet = true
                     app.newSearchAllowed = false
 
-                    pageStack.push(firstWizardPage)
+                    var oneway = oneWay === "true"
+                    pageStack.push(Qt.resolvedUrl("../delegates/SearchDialog.qml"), {currentIp: root.currentIp, oneWay: oneway, direct: directFlight})
                 }
                 menu: ContextMenu {
                     MenuItem {
@@ -391,352 +375,5 @@ Page {
             width: parent.width
             invert: true
         }
-
-        Component {
-            id: searchAirport
-
-            Dialog {
-                id: d
-                property string airportName
-                property string airportIATA
-                property string cityIata
-
-                onBackNavigationChanged: {
-                    airportsModel.clear()
-                }
-
-                Item {
-                    id: searchItem
-
-                    anchors.fill: parent
-
-                    SearchField {
-                        id: searchField
-                        anchors.top: parent.top
-                        width: parent.width
-                        placeholderText: qsTr('Search airports:')
-
-                        EnterKey.onClicked: {
-                            if(searchField.text.length > 2) {
-                                airportsModel.clear()
-                                var searchText = searchField.text.replace(/ /g, '%20')
-                                var url = "http://nano.aviasales.ru/places_" + language + "?term=" + searchText
-                                Utils.performRequest("GET", url, getCityInfo)
-                                loadData = true
-                            }
-                        }
-                    }
-                    ListView {
-                        clip: true
-                        spacing: Theme.paddingSmall
-                        width: parent.width
-                        anchors.top: searchField.bottom
-                        anchors.bottom: parent.bottom
-
-                        model: airportsModel
-                        delegate: ListItem {
-                            height: Theme.itemSizeSmall
-                            width: parent.width
-                            Label {
-                                anchors.left: parent.left
-                                anchors.leftMargin: Theme.horizontalPageMargin
-                                anchors.verticalCenter: parent.verticalCenter
-                                width: parent.width
-//                                visible: model.airport_name?true:false
-                                text: (model.airport_name?model.airport_name:model.name) + " (" + model.iata + ")"
-                            }
-                            onClicked: {
-                                d.airportName = model.airport_name?model.airport_name:model.name
-                                d.airportIATA = model.iata
-                                d.cityIata = model.city_iata?model.city_iata:model.iata
-                                airportsModel.clear()
-                                d.accept()
-                            }
-                        }
-                        ViewPlaceholder {
-                            enabled: airportsModel.count == 0&&!loadData&&finishSearching
-                            text: showDialog?"No airports found":""
-                            hintText: "Enter airport/city name"
-                        }
-                        BusyIndicator {
-                            running: loadData
-                            size: BusyIndicatorSize.Large
-                            anchors.centerIn: parent
-                        }
-                    }
-                }
-            }
-        }
-
-        Component {
-            id: firstWizardPage
-
-            Dialog {
-                canAccept: origin.length >= 2&&destination.length >= 2&&departureDateValueIsSet
-                acceptDestination: searchPage
-                acceptDestinationAction: PageStackAction.Pop
-
-                Flickable {
-                    // ComboBox requires a flickable ancestor
-                    width: parent.width
-                    height: parent.height
-                    interactive: false
-
-                    Column {
-                        width: parent.width
-                        DialogHeader {
-                            acceptText: qsTr("Search")
-                            cancelText: qsTr("Cancel")
-                        }
-
-                        ListItem {
-                            id: originSelector
-                            height: Theme.itemSizeMedium
-                            width: parent.width
-                            Label {
-                                id: label
-                                anchors.left: parent.left
-                                anchors.leftMargin: Theme.horizontalPageMargin
-                                anchors.verticalCenter: parent.verticalCenter
-                                text: !origin?qsTr('Origin:'):originText
-                            }
-
-                            function openSearchDialog() {
-                                var dialog = pageStack.push(searchAirport)
-
-                                dialog.accepted.connect(function() {
-                                    originText = dialog.airportName + " (" + dialog.airportIATA + ")"
-                                    origin = dialog.cityIata
-                                    originAirport = dialog.airportName
-                                })
-                            }
-                            onClicked: {
-                                originSelector.openSearchDialog()
-                            }
-                        }
-                        IconButton {
-                            enabled: true // origin&&destination
-                            icon.source: "image://theme/icon-m-shuffle"
-                            onClicked: {
-                                var tmp = label.text
-                                label.text = labelDest.text
-                                labelDest.text = tmp
-                                var iata = origin
-                                origin = destination
-                                destination = iata
-                            }
-                        }
-
-                        ListItem {
-                            id: destinationSelector
-                            height: Theme.itemSizeMedium
-                            width: parent.width
-                            Label {
-                                id: labelDest
-                                anchors.left: parent.left
-                                anchors.leftMargin: Theme.horizontalPageMargin
-                                anchors.verticalCenter: parent.verticalCenter
-                                text: !destination?qsTr('Destination:'):destinationText
-                            }
-
-                            function openSearchDialog() {
-                                var dialog = pageStack.push(searchAirport)
-
-                                dialog.accepted.connect(function() {
-                                    destinationText = dialog.airportName + "(" + dialog.airportIATA + ")"
-                                    destination = dialog.cityIata
-                                    destinationAirport = dialog.airportName
-                                })
-                            }
-                            onClicked: {
-                                openSearchDialog()
-                            }
-                        }
-
-                        ValueButton {
-                            id: departureDate
-
-                            function openDateDialog() {
-                                var dialog = pageStack.push("Sailfish.Silica.DatePickerDialog", {
-                                                date: departureSelectedDate
-                                             })
-
-                                dialog.accepted.connect(function() {
-                                    var currDate = new Date()
-                                    if (currDate <= dialog.date) {
-                                        departureDateValue = dialog.dateText
-                                        departureSelectedDate = dialog.date
-                                        departureDateValueIsSet = true
-                                    }
-
-                                    //Depart date can not be from past
-                                })
-                            }
-
-                            label: qsTr("Departure date:")
-                            value: departureDateValue
-                            width: parent.width
-                            onClicked: openDateDialog()
-                        }
-                        TextSwitch {
-                            id: comboBoxOneWayTicket
-                            checked: true
-                            text: qsTr("One way ticket")
-                        }
-                        ValueButton {
-                            id: returnDateDate
-                            enabled: !comboBoxOneWayTicket.checked
-
-                            function openDateDialog() {
-                                var dialog = pageStack.push("Sailfish.Silica.DatePickerDialog", {
-                                                date: returnSelectedDate
-                                             })
-
-                                dialog.accepted.connect(function() {
-                                    var currDate = new Date()
-                                    if (currDate <= dialog.date) {
-                                        returnDateValue = dialog.dateText
-                                        returnSelectedDate = dialog.date
-                                        returnDateValueIsSet = true
-                                    }
-                                    //Depart date can not be from past
-                                })
-                            }
-
-                            label: qsTr("Return date:")
-                            value: returnDateValue
-                            width: parent.width
-                            onClicked: openDateDialog()
-                        }
-                        SectionHeader {
-                            text: qsTr("Adults count")
-                        }
-                        Row {
-                            id: numberOfPassangers
-
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            IconButton {
-                                icon.source: "image://theme/icon-m-remove"
-                                onClicked: {
-                                    passengers = parseInt(adultsCount.text)
-                                    if (passengers > 1) {
-                                        passengers = passengers - 1
-                                    }
-                                    adultsCount.text = passengers
-                                    console.log(passengers)
-                                }
-                            }
-                            Label {
-                                id: adultsCount
-
-                                anchors.verticalCenter: parent.verticalCenter
-                                width: parent.width * 0.25
-                                horizontalAlignment: Text.AlignHCenter
-                                text: "2"
-                            }
-                            IconButton {
-                                icon.source: "image://theme/icon-m-add"
-                                onClicked: {
-                                    passengers = parseInt(adultsCount.text)
-                                    if (passengers < 10) {
-                                        passengers = passengers + 1
-                                    }
-                                    adultsCount.text = passengers
-                                    console.log(passengers)
-                                }
-                            }
-                        }
-//                        Slider {
-//                            id: numberOfPassangers
-//                            width: parent.width
-//                            label: qsTr("Number of passangers")
-//                            minimumValue: 1
-//                            maximumValue: 10
-//                            value: passengers
-//                            stepSize: 1
-//                            valueText: qsTr("Adults: ") + value
-//                            onValueChanged: {
-//                                passengers = value
-//                            }
-//                        }
-//                        SectionHeader { text: qsTr("Options") }
-                        TextSwitch {
-                            id: directTicketsOnly
-                            checked: direct
-                            text: qsTr("Without transfer")
-                            onCheckedChanged: {
-                                direct = checked
-                            }
-                        }
-                        ComboBox {
-                            id: classSelector
-
-                            width: parent.width
-                            label: qsTr('Seat class:')
-                            currentIndex: 0
-
-                            menu: ContextMenu {
-                                Repeater {
-                                    model: classSeatsModel
-
-                                    MenuItem {
-                                        text: model.name
-                                        onClicked: {
-                                            seat = model.seat
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                onCanceled: {
-                    app.newSearchAllowed = true
-                    showDialog = false
-                }
-
-                onAccepted: {
-                    var url = "http://api.travelpayouts.com/v1/flight_search"
-
-                    var postParms = {}
-                    postParms.marker = Utils.marker
-                    postParms.host = Utils.host
-                    postParms.user_ip = currentIp
-                    postParms.locale = language
-                    postParms.trip_class = seat
-                    postParms.passengers = {"adults": passengers, "children": 0, "infants": 0}
-                    postParms.segments = [{"origin": origin, "destination": destination, "date": Utils.getFullDate(departureSelectedDate)}]
-
-                    if (returnDateValueIsSet) {
-                        postParms.segments.push({"origin": destination, "destination": origin, "date": Utils.getFullDate(returnSelectedDate)})
-                    }
-
-                    var s = Utils.createMD5(postParms)
-                    postParms.signature = s
-
-                    currentSearch["segments"] = [{"origin": origin, "destination": destination}]
-                    currentSearch["departureDate"] = departureSelectedDate
-                    currentSearch["passengers"] = {"adults": passengers, "children": 0, "infants": 0}
-                    currentSearch["oneWay"] = direct
-                    currentSearch["tripClass"] = seat
-                    if (returnDateValueIsSet) {
-                        currentSearch["returnDateDate"] = returnSelectedDate
-                        currentSearch["segments"].push({"origin": destination, "destination": origin})
-                    }
-                    var key = origin+"-"+destination
-                    app.currentSearch = key
-                    database.storeFavorite(key, JSON.stringify(currentSearch))
-
-                    showDialog = true
-                    loadData = true
-                    finishSearching = false
-
-                    app.newSearchAllowed = false
-
-                    pageStack.push(Qt.resolvedUrl("SearchResultsPage.qml"), {searchUrl: url, searchParams: postParms, directFlight: direct})
-                }
-            }
-        }
     }
-
 }

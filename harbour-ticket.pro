@@ -40,16 +40,6 @@ TRANSLATIONS += translations/harbour-ticket-pl.ts
 TRANSLATIONS += translations/harbour-ticket-el.ts
 
 DISTFILES += \
-    qml/pages/StartPage.qml \
-    qml/pages/TicketInfoDelegate.qml \
-    qml/pages/SettingsPage.qml \
-    qml/pages/AboutPage.qml \
-    qml/pages/FavoritesPage.qml \
-    qml/pages/TicketPage.qml \
-    qml/pages/SearchResultsPage.qml \
-    qml/pages/WebPage.qml \
-    qml/delegates/FavoritesDelegate.qml \
-    qml/pages/AirlinesOffers.qml \
-    qml/delegates/StartScreenItem.qml \
-    qml/utils/Utils.js \
-    qml/utils/DataBase.qml
+    qml/pages/*.qml \
+    qml/delegates/*.qml \
+    qml/utils/*

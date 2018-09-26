@@ -16,6 +16,80 @@
     </message>
 </context>
 <context>
+    <name>SearchAirportDialog</name>
+    <message>
+        <source>Search airports:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No airports found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter airport/city name</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SearchDialog</name>
+    <message>
+        <source>Search</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Origin:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Destination:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Departure date:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>One way ticket</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Return date:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Adults count</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Without transfer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Seat class:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Econom class</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Busines class</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Childrens count</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SearchResultsPage</name>
     <message>
         <source>Search</source>
@@ -108,31 +182,7 @@
 <context>
     <name>StartPage</name>
     <message>
-        <source>Econom class</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Busines class</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Avia tickets</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Search</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Origin:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Destination:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Departure date:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -144,31 +194,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Without transfer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Return date:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Search airports:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Seat class:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -181,10 +211,6 @@
     </message>
     <message>
         <source>Search history</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Adults count</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

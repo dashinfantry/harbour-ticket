@@ -131,7 +131,7 @@ Item {
             var result = tx.executeSql('SELECT value FROM favorites')
             console.log(result, JSON.stringify(result))
             for(var i = 0; i < result.rows.length; i++) {
-                print(result.rows.item(i).value)
+//                print(result.rows.item(i).value)
                 res.push(result.rows.item(i).value)
             }
         })
@@ -144,6 +144,15 @@ Item {
         if(!_db) { return; }
         _db.transaction( function(tx) {
             res = tx.executeSql('DELETE FROM favorites WHERE keyname=?', [keyname])
+        })
+        return res
+    }
+    function deleteFavorites() {
+        console.log('delete favorite table')
+        var res = ""
+        if(!_db) { return; }
+        _db.transaction( function(tx) {
+            res = tx.executeSql('DROP TABLE favorites')
         })
         return res
     }
