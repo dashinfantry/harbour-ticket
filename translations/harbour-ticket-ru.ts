@@ -186,10 +186,6 @@
         <translation>Авиа билеты</translation>
     </message>
     <message>
-        <source>Select</source>
-        <translation>Выбрать</translation>
-    </message>
-    <message>
         <source>One way ticket</source>
         <translation>Билет в один конец</translation>
     </message>

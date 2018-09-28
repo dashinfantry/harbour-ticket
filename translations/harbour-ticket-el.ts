@@ -186,10 +186,6 @@
         <translation>Εισιτήρια Avia</translation>
     </message>
     <message>
-        <source>Select</source>
-        <translation>Επιλέξτε</translation>
-    </message>
-    <message>
         <source>One way ticket</source>
         <translation>Απλό εισιτήριο</translation>
     </message>

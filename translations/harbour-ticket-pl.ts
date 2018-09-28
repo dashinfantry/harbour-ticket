@@ -190,10 +190,6 @@
         <translation>Bilet w jedną stronę</translation>
     </message>
     <message>
-        <source>Select</source>
-        <translation>Wybierz</translation>
-    </message>
-    <message>
         <source>Settings</source>
         <translation>Ustawienia</translation>
     </message>

@@ -10,34 +10,32 @@ Page {
     id: root
     orientation: Orientation.Portrait
 
-    property bool showDialog: false
-
     property variant airportsInfo: ({})
 
-    property string origin
-    property string originText
-    property string destination
-    property string destinationText
-    property string originAirport
-    property string destinationAirport
-    property string currency: "eur"
+//    property string origin
+//    property string originText
+//    property string destination
+//    property string destinationText
+//    property string originAirport
+//    property string destinationAirport
+//    property string currency: "eur"
     property string language: "en"
-    property string seat: "Y"
+//    property string seat: "Y"
     property string currentIp
-    property string uuid
+//    property string uuid
 
-    property int passengers: 2
-    property bool direct: false
-    property string departureDateValue: qsTr("Select")
+//    property int passengers: 2
+//    property bool direct: false
+//    property string departureDateValue: qsTr("Select")
     property date departureSelectedDate: new Date()
-    property bool departureDateValueIsSet: false
-    property string returnDateValue: qsTr("Select")
-    property date returnSelectedDate: new Date()
-    property bool returnDateValueIsSet: false
+//    property bool departureDateValueIsSet: false
+//    property string returnDateValue: qsTr("Select")
+//    property date returnSelectedDate: new Date()
+//    property bool returnDateValueIsSet: false
 
 
-    property bool showMainView: false
-    property variant currentSearch: ({})
+//    property bool showMainView: false
+//    property variant currentSearch: ({})
 
     DataBase {
         id: database
@@ -70,7 +68,7 @@ Page {
     Component.onCompleted: {
 
 //        database.deleteFavorites()
-        currency = database.currency
+//        currency = database.currency
         language = database.language
 
         hint.visible = database.showHints
@@ -111,7 +109,8 @@ Page {
 //                console.log(favorites[id])
                 var t = JSON.parse(favorites[id])
 //                console.log("origin", t.segments[0].origin)
-                var tmp = {"fav_origin": t.segments[0].origin, "fav_destination": t.segments[0].destination, "fav_departureDate": t.departureDate}
+                var tmp = {"fav_origin": t.segments[0].origin, "fav_destination": t.segments[0].destination, "fav_departureDate": t.departureDate,
+                            "oneWay": t.oneWay, "adults": t.passengers.adults, "children": t.passengers.children, "tripClass": t.tripClass, "directFlight": t.oneWay}
                 favoritesModel.append(tmp)
             }
         }
@@ -276,21 +275,25 @@ Page {
                 departureDate: fav_departureDate
 
                 onClicked: {
-                    root.origin = fav_origin
-                    root.originText = app.airportsInfo[fav_origin].name + " (" + fav_origin + ")"
-                    root.destination = fav_destination
-                    root.destinationText = app.airportsInfo[fav_destination].name + " (" + fav_destination + ")"
+//                    root.origin = fav_origin
+//                    root.originText = app.airportsInfo[fav_origin].name + " (" + fav_origin + ")"
+//                    root.destination = fav_destination
+//                    root.destinationText = app.airportsInfo[fav_destination].name + " (" + fav_destination + ")"
                     var currDate = new Date()
                     departureSelectedDate = new Date(fav_departureDate)
                     if (currDate > departureSelectedDate) {
                         departureSelectedDate = currDate
                     }
-                    departureDateValue = Utils.getFullDate(departureSelectedDate)
-                    departureDateValueIsSet = true
                     app.newSearchAllowed = false
 
-                    var oneway = oneWay === "true"
-                    pageStack.push(Qt.resolvedUrl("../delegates/SearchDialog.qml"), {currentIp: root.currentIp, oneWay: oneway, direct: directFlight})
+//                    var oneway = typeof oneWay === "undefined" ? oneWay:true
+                    pageStack.push(Qt.resolvedUrl("../delegates/SearchDialog.qml"), {currentIp: root.currentIp, oneWay: true, direct: directFlight,
+                                       origin: fav_origin, destination: fav_destination,
+                                       originText: app.airportsInfo[fav_origin].name + " (" + fav_origin + ")",
+                                       destinationText: app.airportsInfo[fav_destination].name + " (" + fav_destination + ")",
+                                       passengers: adults, childrens: children,
+                                       departureSelectedDate: departureSelectedDate, seat: tripClass,
+                                       departureDateValue: Utils.getFullDate(departureSelectedDate), departureDateValueIsSet: true})
                 }
                 menu: ContextMenu {
                     MenuItem {

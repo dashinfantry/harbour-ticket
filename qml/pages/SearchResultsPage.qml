@@ -190,25 +190,9 @@ Page {
         if (searchUrl && searchParams) {
             Utils.performRequest("POST", searchUrl, showResults, searchParams)
         }
-        database.initDatabase()
 
-        var convert = database.getName("convert")
-        if (convert) {
-            if (convert == "false") {
-                _convertPrice = false
-            } else {
-                _convertPrice = true
-                var currency = database.getName("currency")
-                if (currency) {
-                    _selectedCurrency = currency
-                } else {
-                    database.storeData("currency", 1, "EUR")
-                    _selectedCurrency = "EUR"
-                }
-            }
-        } else {
-            database.storeData("convert", "false", "false")
-        }
+        _convertPrice = database.convertCurrency
+        _selectedCurrency = database.currency
     }
 
     Component.onDestruction: {

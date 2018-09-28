@@ -194,10 +194,6 @@
         <translation>Ta bort</translation>
     </message>
     <message>
-        <source>Select</source>
-        <translation>VÃ¤lj</translation>
-    </message>
-    <message>
         <source>Search history</source>
         <translation>SÃ¶khistorik</translation>
     </message>
