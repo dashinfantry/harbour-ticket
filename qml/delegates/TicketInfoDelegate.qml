@@ -95,7 +95,7 @@ ListItem {
     }
 
     onClicked: {
-        pageStack.push(Qt.resolvedUrl("TicketPage.qml"), {"ticket": ticketInfo, "_search_id": search_id, "currencyRates": currencyRatesInfo, "_currency": _currency})
+        pageStack.push(Qt.resolvedUrl("../pages/TicketPage.qml"), {"ticket": ticketInfo, "_search_id": search_id, "currencyRates": currencyRatesInfo, "_currency": _currency})
     }
 }
 
