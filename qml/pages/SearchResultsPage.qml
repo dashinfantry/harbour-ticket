@@ -4,6 +4,7 @@ import Sailfish.Silica 1.0
 import "../utils/Utils.js" as Utils
 
 import "../utils"
+import "../delegates"
 
 Page {
     property bool showMainView: false
@@ -246,6 +247,7 @@ Page {
                 ticketInfo: fullInfo
                 search_id: _search_id
                 currencyRatesInfo: _currencyRates
+                proposal: fullInfo
             }
             header: PageHeader {
                 title: qsTr("Results")

@@ -14,6 +14,8 @@ ListItem {
     property string fly_duration: ""
     property int transfers_count: 0
 
+    property variant proposal: ({})
+
 //    property bool   direct: false
 
     property variant ticketInfo: ({})
@@ -30,6 +32,27 @@ ListItem {
         return hours + qsTr(" h ") + minutes + qsTr(" m")
     }
 
+    QtObject {
+        id: internal
+
+        property string flyNumber: ""
+        property string arrival_date: ""
+        property string departure_date: ""
+
+    }
+
+    Component.onCompleted: {
+        var flyNumbers = []
+        var segment = proposal.segment[0]
+        for (var id in segment.flight) {
+            var t = segment.flight[id].operating_carrier + segment.flight[id].number
+            flyNumbers.push(t)
+        }
+        internal.flyNumber = flyNumbers.filter(Utils.onlyUnique).join(" - ")
+        internal.departure_date = Utils.fromUnixToLocalDateTime(segment.flight[0].local_departure_timestamp)
+        internal.arrival_date = Utils.fromUnixToLocalDateTime(segment.flight[0].local_arrival_timestamp)
+    }
+
     Label {
         id: orig_dest
         anchors.top: parent.top
@@ -38,6 +61,7 @@ ListItem {
         text: orig
         horizontalAlignment: Text.AlignHCenter
     }
+
     Image {
         id: logo
         anchors.left: parent.left
@@ -49,6 +73,16 @@ ListItem {
         //source: iata?"http://ios.aviasales.ru/logos/xxhdpi/"+ iata +".png":""
         fillMode: Image.PreserveAspectFit
     }
+
+    Text {
+        anchors.left: logo.right
+        anchors.leftMargin: Theme.horizontalPageMargin
+        anchors.bottom: logo.bottom
+        color: Theme.secondaryColor
+
+        text: internal.flyNumber
+    }
+
     Column {
         id: datesColumn
         width: parent.width - ticketPrice.width
@@ -58,13 +92,13 @@ ListItem {
         DetailItem {
             leftMargin: Theme.paddingSmall
             label: qsTr("Departure date/time:")
-            value: Utils.fromUnixToLocalDateTime(date_from)
+            value: internal.departure_date//Utils.fromUnixToLocalDateTime(date_from)
         }
         DetailItem {
             visible: date_to?true:false
             leftMargin: Theme.paddingSmall
             label: qsTr("Arrival date/time:")
-            value: Utils.fromUnixToLocalDateTime(date_to)            
+            value: internal.arrival_date//Utils.fromUnixToLocalDateTime(date_to)
         }
         DetailItem {
             leftMargin: Theme.paddingSmall
