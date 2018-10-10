@@ -42,4 +42,5 @@ TRANSLATIONS += translations/harbour-ticket-el.ts
 DISTFILES += \
     qml/pages/*.qml \
     qml/delegates/*.qml \
-    qml/utils/*
+    qml/utils/* \
+    qml/delegates/ComplexSearchDialog.qml

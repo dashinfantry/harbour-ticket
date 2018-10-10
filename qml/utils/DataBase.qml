@@ -7,8 +7,8 @@ Item {
 
     property variant record
 
-    property string currency
-    property string language
+    property string currency: "eur"
+    property string language: "en"
     property bool showHints: true
     property bool convertCurrency: false
 

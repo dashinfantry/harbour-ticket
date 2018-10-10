@@ -11,31 +11,9 @@ Page {
     orientation: Orientation.Portrait
 
     property variant airportsInfo: ({})
-
-//    property string origin
-//    property string originText
-//    property string destination
-//    property string destinationText
-//    property string originAirport
-//    property string destinationAirport
-//    property string currency: "eur"
     property string language: "en"
-//    property string seat: "Y"
     property string currentIp
-//    property string uuid
-
-//    property int passengers: 2
-//    property bool direct: false
-//    property string departureDateValue: qsTr("Select")
     property date departureSelectedDate: new Date()
-//    property bool departureDateValueIsSet: false
-//    property string returnDateValue: qsTr("Select")
-//    property date returnSelectedDate: new Date()
-//    property bool returnDateValueIsSet: false
-
-
-//    property bool showMainView: false
-//    property variant currentSearch: ({})
 
     DataBase {
         id: database
@@ -66,9 +44,6 @@ Page {
     }
 
     Component.onCompleted: {
-
-//        database.deleteFavorites()
-//        currency = database.currency
         language = database.language
 
         hint.visible = database.showHints
@@ -127,19 +102,12 @@ Page {
     function getCurrentIp(data) {
         if(data !== "error") {
             app.newSearchAllowed = false
-//            var ipAddr = JSON.parse(data)
-//            var url = "http://www.travelpayouts.com/whereami?locale=ru&ip=" + ipAddr.ip
-
-//            var parsed = JSON.parse(data)
-//            if (parsed.status == "success") {
-//                currentIp = parsed.query //ipAddr.ip
-//            }
             currentIp = data
 
             console.log("My IP", currentIp)
 
-            var url = "http://nano.aviasales.ru/places/top_" + language + ".json"
-            Utils.performRequest("GET", url, getAirportsInfo)
+//            var url = "http://nano.aviasales.ru/places/top_" + language + ".json"
+//            Utils.performRequest("GET", url, getAirportsInfo)
         }
     }
 
@@ -245,8 +213,12 @@ Page {
                 icon.source: image
                 description: descr
                 onClicked: {
-                    var oneway = type === "simple"
-                    pageStack.push(Qt.resolvedUrl("../delegates/SearchDialog.qml"), {currentIp: root.currentIp, oneWay: oneway})
+                    if (type === "complex") {
+                        pageStack.push(Qt.resolvedUrl("../delegates/ComplexSearchDialog.qml"), {currentIp: root.currentIp})
+                    } else {
+                        var oneway = type === "simple"
+                        pageStack.push(Qt.resolvedUrl("../delegates/SearchDialog.qml"), {currentIp: root.currentIp, oneWay: oneway})
+                    }
                 }
             }
 

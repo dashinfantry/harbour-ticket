@@ -9,6 +9,53 @@
     </message>
 </context>
 <context>
+    <name>ComplexSearchDialog</name>
+    <message>
+        <source>Select</source>
+        <translation type="unfinished">VÃ¤lj</translation>
+    </message>
+    <message>
+        <source>Econom class</source>
+        <translation type="unfinished">Ekonomiklass</translation>
+    </message>
+    <message>
+        <source>Busines class</source>
+        <translation type="unfinished">AffÃ¤rsklass</translation>
+    </message>
+    <message>
+        <source>Origin:</source>
+        <translation type="unfinished">AvgÃ¥ngsplats:</translation>
+    </message>
+    <message>
+        <source>Destination:</source>
+        <translation type="unfinished">Destination:</translation>
+    </message>
+    <message>
+        <source>Departure date:</source>
+        <translation type="unfinished">AvgÃ¥ngsdatum:</translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <translation type="unfinished">SÃ¶k</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Avbryt</translation>
+    </message>
+    <message>
+        <source>Adults count</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Childrens count</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Trip class:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FavoritesDelegate</name>
     <message>
         <source>Departure: </source>

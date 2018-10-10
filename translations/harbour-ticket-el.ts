@@ -9,6 +9,53 @@
     </message>
 </context>
 <context>
+    <name>ComplexSearchDialog</name>
+    <message>
+        <source>Select</source>
+        <translation type="unfinished">Επιλέξτε</translation>
+    </message>
+    <message>
+        <source>Econom class</source>
+        <translation type="unfinished">Οικονομική</translation>
+    </message>
+    <message>
+        <source>Busines class</source>
+        <translation type="unfinished">Business</translation>
+    </message>
+    <message>
+        <source>Origin:</source>
+        <translation type="unfinished">Αφετηρία:</translation>
+    </message>
+    <message>
+        <source>Destination:</source>
+        <translation type="unfinished">Προορισμός:</translation>
+    </message>
+    <message>
+        <source>Departure date:</source>
+        <translation type="unfinished">Ημερομηνία αναχώρησης:</translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <translation type="unfinished">Αναζήτηση</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Ακύρωση</translation>
+    </message>
+    <message>
+        <source>Adults count</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Childrens count</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Trip class:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FavoritesDelegate</name>
     <message>
         <source>Departure: </source>
