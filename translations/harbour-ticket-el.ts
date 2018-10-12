@@ -76,6 +76,10 @@
         <source>Enter airport/city name</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Location: </source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SearchDialog</name>
@@ -139,10 +143,6 @@
 <context>
     <name>SearchResultsPage</name>
     <message>
-        <source>Search</source>
-        <translation>Αναζήτηση</translation>
-    </message>
-    <message>
         <source>Results</source>
         <translation>Αποτελέσματα</translation>
     </message>
@@ -157,6 +157,10 @@
     <message>
         <source>low to high</source>
         <translation>χαμηλή προς υψηλή</translation>
+    </message>
+    <message>
+        <source>Sort by airline</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

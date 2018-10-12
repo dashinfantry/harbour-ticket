@@ -101,10 +101,16 @@ Page {
 
             for (var a in parsed) {
                 var part = parsed[a]
-//                console.log("\n\n\n\n",JSON.stringify(part))
+                console.log("\n\n\n\n",JSON.stringify(part), "\n\n\n\n")
                 var _search_id = part.search_id
+
+                var airports = []
+                for (var id in part.segments) {
+                    var t = part.segments[id].origin + " - " + part.segments[id].destination
+                    airports.push(t)
+                }
                 for (var i in part.proposals) {
-                    console.log(JSON.stringify(part.proposals[i]))
+//                    console.log(JSON.stringify(part.proposals[i]))
                     var proposal = part.proposals[i]
 
                     var total_duration = proposal.total_duration
@@ -114,20 +120,13 @@ Page {
                     var departure_date = proposal.segments_time[0][0]
                     var arrival_date = proposal.segments_time[0][1]
 
-                    var airports = []
-                    var segment = proposal.segment[0]
-                    for (var id in segment.flight) {
-                        airports.push(segment.flight[id].departure)
-                        airports.push(segment.flight[id].arrival)
-                    }
-
                     var terms = Object.keys(proposal.terms)
 //                    console.log("\n\nterms",JSON.stringify(terms))
                     for (var j in terms) {
                         var term = proposal.terms[terms[j]]
 //                        console.log("\n\nterm",JSON.stringify(term))
                         if (term.unified_price > 0) {
-                            var points = airports.filter(Utils.onlyUnique).join(" - ")
+                            var points = airports.filter(Utils.onlyUnique).join(" | ")
                             if (!directFlight) {
                                 if (!_convertPrice) {
                                     _selectedCurrency = term.currency
@@ -220,11 +219,18 @@ Page {
                 }
             }
             MenuItem {
-                text: qsTr("Search")
+                text: qsTr("Sort by airline")
+                enabled: !requestTickets.running
                 onClicked: {
-                    requestTickets.stop()
+                    showMainView = false
+                    busyIndicator.running = true
                     resultsModel.clear()
-                    pageStack.pop()
+                    _searchResults.sort(sortBy('carrier', false, String))
+                    for (var i in _searchResults) {
+                        resultsModel.append(_searchResults[i])
+                    }
+                    busyIndicator.running = false
+                    showMainView = true
                 }
             }
         }

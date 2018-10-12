@@ -76,6 +76,10 @@
         <source>Enter airport/city name</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Location: </source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SearchDialog</name>
@@ -139,10 +143,6 @@
 <context>
     <name>SearchResultsPage</name>
     <message>
-        <source>Search</source>
-        <translation>SÃ¶k</translation>
-    </message>
-    <message>
         <source>Results</source>
         <translation>Resultat</translation>
     </message>
@@ -157,6 +157,10 @@
     <message>
         <source>Sort by price: </source>
         <translation>Sortera efter pris: </translation>
+    </message>
+    <message>
+        <source>Sort by airline</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

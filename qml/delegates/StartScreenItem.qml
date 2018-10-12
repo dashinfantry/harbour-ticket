@@ -4,7 +4,7 @@ import Sailfish.Silica 1.0
 BackgroundItem {
     id: root
 
-    property string iconSource: ""
+    property string iconSource: "image://theme/icon-m-gps"
     property string title: ""
 
     height: Theme.itemSizeSmall
@@ -16,8 +16,8 @@ BackgroundItem {
         anchors.leftMargin: Theme.horizontalPageMargin
         anchors.verticalCenter: parent.verticalCenter
 
-        height: Theme.iconSizeSmall
-        width: Theme.iconSizeSmall
+        height: Theme.iconSizeMedium
+        width: Theme.iconSizeMedium
         source: iconSource
     }
 

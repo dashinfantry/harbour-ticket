@@ -76,6 +76,10 @@
         <source>Enter airport/city name</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Location: </source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SearchDialog</name>
@@ -147,15 +151,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Search</source>
-        <translation type="unfinished">Wyszukaj</translation>
-    </message>
-    <message>
         <source>Results</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Found: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sort by airline</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

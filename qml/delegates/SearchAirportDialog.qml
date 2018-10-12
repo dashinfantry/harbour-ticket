@@ -80,12 +80,20 @@ Dialog {
                 Label {
                     anchors.left: parent.left
                     anchors.leftMargin: Theme.horizontalPageMargin
+                    anchors.right: parent.right
+                    anchors.rightMargin: Theme.horizontalPageMargin
                     anchors.verticalCenter: parent.verticalCenter
                     width: parent.width
                     wrapMode: Text.WordWrap
+
 //                                visible: model.airport_name?true:false
-                    text: (model.airport_name ? model.airport_name : model.name) + " (" + model.iata + ")"
+                    text: (model.airport_name ? model.airport_name + ": " + model.name : qsTr("Location: ") + model.name) + " (" + model.iata + ")"
                 }
+                Separator {
+                    anchors.bottom: parent.bottom
+                    width: parent.width
+                }
+
                 onClicked: {
                     d.airportName = model.airport_name?model.airport_name:model.name
                     d.airportIATA = model.iata
