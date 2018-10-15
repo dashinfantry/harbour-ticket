@@ -60,7 +60,12 @@ Dialog {
                 if(searchField.text.length > 2) {
                     airportsModel.clear()
                     var searchText = searchField.text.replace(/ /g, '%20')
-                    var url = "http://nano.aviasales.ru/places_" + database.language.toLowerCase() + "?term=" + searchText
+                    var lang = database.language.toLowerCase()
+                    if (lang !== "en" || lang !== "ru") {
+                        lang = "en"
+                    }
+
+                    var url = "http://nano.aviasales.ru/places_" + lang + "?term=" + searchText
                     Utils.performRequest("GET", url, getCityInfo)
                     internal.loadData = true
                 }
@@ -77,29 +82,27 @@ Dialog {
             delegate: ListItem {
                 height: Theme.itemSizeSmall
                 width: parent.width
-                Label {
-                    anchors.left: parent.left
-                    anchors.leftMargin: Theme.horizontalPageMargin
-                    anchors.right: parent.right
-                    anchors.rightMargin: Theme.horizontalPageMargin
-                    anchors.verticalCenter: parent.verticalCenter
-                    width: parent.width
-                    wrapMode: Text.WordWrap
 
-//                                visible: model.airport_name?true:false
-                    text: (model.airport_name ? model.airport_name + ": " + model.name : qsTr("Location: ") + model.name) + " (" + model.iata + ")"
+                IconTextItem {
+                    iconSource: model.airport_name ?
+                                    "../images/airport_target.svg" :
+                                    "../images/target.svg"
+                    fontSize: Theme.fontSizeExtraSmall
+                    title: (model.airport_name ?
+                                model.airport_name + ": " + model.name :
+                                qsTr("Location: ") + model.name) + " (" + model.iata + ")"
+                    onClicked: {
+                        d.airportName = model.airport_name?model.airport_name:model.name
+                        d.airportIATA = model.iata
+                        d.cityIata = model.city_iata ? model.city_iata : model.iata
+                        airportsModel.clear()
+                        d.accept()
+                    }
                 }
+
                 Separator {
                     anchors.bottom: parent.bottom
                     width: parent.width
-                }
-
-                onClicked: {
-                    d.airportName = model.airport_name?model.airport_name:model.name
-                    d.airportIATA = model.iata
-                    d.cityIata = model.city_iata ? model.city_iata : model.iata
-                    airportsModel.clear()
-                    d.accept()
                 }
             }
             ViewPlaceholder {

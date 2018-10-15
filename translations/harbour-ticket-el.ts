@@ -104,10 +104,6 @@
         <translation type="unfinished">Ημερομηνία αναχώρησης:</translation>
     </message>
     <message>
-        <source>One way ticket</source>
-        <translation type="unfinished">Απλό εισιτήριο</translation>
-    </message>
-    <message>
         <source>Return date:</source>
         <translation type="unfinished">Ημερομηνία επιστροφής:</translation>
     </message>
@@ -229,6 +225,14 @@
         <source>TH</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Delete history</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Ρυθμίσεις</translation>
+    </message>
 </context>
 <context>
     <name>StartPage</name>
@@ -280,75 +284,70 @@
         <source>Fly with more than two stops</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Search history is empty</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TicketInfoDelegate</name>
-    <message>
-        <source>Departure date/time:</source>
-        <translation>Ημερομηνία/ώρα αναχώρησης:</translation>
-    </message>
-    <message>
-        <source>Arrival date/time:</source>
-        <translation>Ημερομηνία/ώρα άφιξης:</translation>
-    </message>
-    <message>
-        <source> h </source>
-        <translation> ω </translation>
-    </message>
-    <message>
-        <source> m</source>
-        <translation> λ </translation>
-    </message>
     <message>
         <source>Direct</source>
         <translation>Απευθείας</translation>
     </message>
     <message>
-        <source>Travel duration:</source>
+        <source>Stops: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Transfers:</source>
-        <translation type="unfinished"></translation>
+        <source>Trip duration: </source>
+        <translation type="unfinished">Διάρκεια πτήσης: </translation>
     </message>
 </context>
 <context>
     <name>TicketPage</name>
     <message>
-        <source>Flight number: </source>
-        <translation>Αριθμός πτήσης: </translation>
-    </message>
-    <message>
         <source>Buy</source>
         <translation>Αγορά</translation>
-    </message>
-    <message>
-        <source>h </source>
-        <translation>ω </translation>
-    </message>
-    <message>
-        <source>m</source>
-        <translation>λ</translation>
-    </message>
-    <message>
-        <source>Origin: </source>
-        <translation>Αφετηρία: </translation>
-    </message>
-    <message>
-        <source>Destination: </source>
-        <translation>Προορισμός: </translation>
     </message>
     <message>
         <source>Trip duration: </source>
         <translation>Διάρκεια πτήσης: </translation>
     </message>
     <message>
-        <source>Depature: </source>
-        <translation>Αναχώρηση: </translation>
+        <source>&lt;b&gt;Flight number:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Arrival: </source>
-        <translation>Άφιξη: </translation>
+        <source>&lt;br&gt;&lt;b&gt;Aircraft:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Origin:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Depature:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Destination:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Arrival:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Utils</name>
+    <message>
+        <source> h </source>
+        <translation type="unfinished"> ω </translation>
+    </message>
+    <message>
+        <source> m</source>
+        <translation type="unfinished"> λ </translation>
     </message>
 </context>
 </TS>

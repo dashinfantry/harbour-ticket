@@ -44,6 +44,23 @@ Page {
                     Qt.openUrlExternally("https://www.paypal.me/anenash")
                 }
             }
+            Separator {
+                width: parent.width
+            }
+
+            Label {
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.margins: Theme.horizontalPageMargin
+                width: parent.width
+                horizontalAlignment: Text.AlignHCenter
+                wrapMode: Text.WordWrap
+                textFormat: Text.RichText
+                text: "<div>Icon made from <a href='http://www.onlinewebfonts.com/icon'>Icon Fonts</a> is licensed by CC BY 3.0</div>"
+                onLinkActivated: {
+                    Qt.openUrlExternally(link)
+                }
+            }
         }
     }
 }

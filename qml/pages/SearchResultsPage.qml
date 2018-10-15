@@ -101,8 +101,10 @@ Page {
 
             for (var a in parsed) {
                 var part = parsed[a]
-                console.log("\n\n\n\n",JSON.stringify(part), "\n\n\n\n")
+//                console.log("\n\n\n\n",JSON.stringify(part), "\n\n\n\n")
                 var _search_id = part.search_id
+                var airportsInfo = part.airports
+                var airlinesInfo = part.airlines
 
                 var airports = []
                 for (var id in part.segments) {
@@ -143,7 +145,9 @@ Page {
                                     "transfers": transfers_count,
                                     "fullInfo": proposal,
                                     "_search_id": _search_id,
-                                    "_currencyRates": currencyRates
+                                    "_currencyRates": currencyRates,
+                                    "airportsInfo": airportsInfo,
+                                    "airlinesInfo": airlinesInfo
                                 }
                                 resultsModel.append(tmp_item)
                                 _searchResults.push(tmp_item)
@@ -164,7 +168,9 @@ Page {
                                         "transfers": transfers_count,
                                         "fullInfo": proposal,
                                         "_search_id": _search_id,
-                                        "_currencyRates": currencyRates
+                                        "_currencyRates": currencyRates,
+                                        "airportsInfo": airportsInfo,
+                                        "airlinesInfo": airlinesInfo
                                     }
                                     resultsModel.append(tmp_item)
                                     _searchResults.push(tmp_item)
@@ -250,10 +256,11 @@ Page {
                 airlineIata: carrier
                 fly_duration: duration
                 transfers_count: transfers
-                ticketInfo: fullInfo
                 search_id: _search_id
                 currencyRatesInfo: _currencyRates
                 proposal: fullInfo
+                airports: airportsInfo
+                airlines: airlinesInfo
             }
             header: PageHeader {
                 title: qsTr("Results")

@@ -153,6 +153,7 @@ Item {
         if(!_db) { return; }
         _db.transaction( function(tx) {
             res = tx.executeSql('DROP TABLE favorites')
+            res = tx.executeSql('CREATE TABLE IF NOT EXISTS favorites(keyname TEXT UNIQUE, value TEXT)')
         })
         return res
     }

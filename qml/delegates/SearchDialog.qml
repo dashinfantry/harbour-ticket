@@ -6,7 +6,7 @@ import "../utils"
 
 Dialog {
 
-    property alias oneWay: comboBoxOneWayTicket.checked
+    property bool oneWay: false
 
     property string origin
     property string originText
@@ -70,8 +70,11 @@ Dialog {
                     id: label
                     anchors.left: parent.left
                     anchors.leftMargin: Theme.horizontalPageMargin
+                    anchors.right: parent.right
+                    anchors.rightMargin: Theme.horizontalPageMargin
                     anchors.verticalCenter: parent.verticalCenter
                     text: !origin?qsTr('Origin:'):originText
+                    truncationMode: TruncationMode.Fade
                 }
 
                 onClicked: {
@@ -105,8 +108,11 @@ Dialog {
                     id: labelDest
                     anchors.left: parent.left
                     anchors.leftMargin: Theme.horizontalPageMargin
+                    anchors.right: parent.right
+                    anchors.rightMargin: Theme.horizontalPageMargin
                     anchors.verticalCenter: parent.verticalCenter
                     text: !destination?qsTr('Destination:'):destinationText
+                    truncationMode: TruncationMode.Fade
                 }
 
                 onClicked: {
@@ -145,14 +151,11 @@ Dialog {
                 width: parent.width
                 onClicked: openDateDialog()
             }
-            TextSwitch {
-                id: comboBoxOneWayTicket
-                checked: true
-                text: qsTr("One way ticket")
-            }
+
             ValueButton {
                 id: returnDateDate
-                enabled: !comboBoxOneWayTicket.checked
+
+                visible: !oneWay
 
                 function openDateDialog() {
                     var dialog = pageStack.push("Sailfish.Silica.DatePickerDialog", {
@@ -176,6 +179,7 @@ Dialog {
                 onClicked: openDateDialog()
             }
             SectionHeader {
+
                 text: qsTr("Adults count")
             }
             Row {
@@ -190,7 +194,6 @@ Dialog {
                             passengers = passengers - 1
                         }
                         adultsCount.text = passengers
-                        console.log(passengers)
                     }
                 }
                 Label {
@@ -209,7 +212,6 @@ Dialog {
                             passengers = passengers + 1
                         }
                         adultsCount.text = passengers
-                        console.log(passengers)
                     }
                 }
             }
@@ -228,7 +230,6 @@ Dialog {
                             childrens = childrens - 1
                         }
                         childrensCount.text = childrens
-                        console.log(childrens)
                     }
                 }
                 Label {
@@ -247,7 +248,6 @@ Dialog {
                             childrens = childrens + 1
                         }
                         childrensCount.text = childrens
-                        console.log(childrens)
                     }
                 }
             }
@@ -307,12 +307,15 @@ Dialog {
         postParms.signature = s
 
         currentSearch["segments"] = [{"origin": origin, "destination": destination}]
+        currentSearch["originName"] = originAirport
+        currentSearch["destinationName"] = destinationAirport
         currentSearch["departureDate"] = departureSelectedDate
         currentSearch["passengers"] = {"adults": passengers, "children": 0, "infants": 0}
-        currentSearch["oneWay"] = comboBoxOneWayTicket.checked
         currentSearch["directFlight"] = direct
         currentSearch["tripClass"] = seat
+        currentSearch["roundTrip"] = false
         if (returnDateValueIsSet) {
+            currentSearch["roundTrip"] = true
             currentSearch["returnDateDate"] = returnSelectedDate
             currentSearch["segments"].push({"origin": destination, "destination": origin})
         }

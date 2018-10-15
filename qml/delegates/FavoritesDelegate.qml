@@ -25,21 +25,30 @@ ListItem {
     }
     Text {
         id: airportOriginFullName
+        anchors.left: parent.left
+        anchors.leftMargin: Theme.paddingMedium
         anchors.right: airportsIata.horizontalCenter
         anchors.rightMargin: Theme.paddingSmall
         anchors.top: airportsIata.bottom
+        width: parent.width * 0.5
         text: "" //app.airportsInfo[fav_origin].name
         color: Theme.secondaryColor
         font.pixelSize: Theme.fontSizeTiny
+        maximumLineCount: 1
+        horizontalAlignment: Text.AlignRight
     }
     Text {
         id: airportDestinationFullName
         anchors.left: airportsIata.horizontalCenter
         anchors.leftMargin: Theme.paddingMedium
+        anchors.right: parent.right
+        anchors.rightMargin: Theme.paddingSmall
         anchors.top: airportsIata.bottom
+        width: parent.width * 0.5
         text: "" //app.airportsInfo[fav_destination].name
         color: Theme.secondaryColor
         font.pixelSize: Theme.fontSizeTiny
+        maximumLineCount: 1
     }
     Text {
         id: departureText

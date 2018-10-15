@@ -2,6 +2,7 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 
 import "../utils"
+import "../delegates"
 
 Page {
     id: settingsPage
@@ -20,8 +21,10 @@ Page {
 
     Column {
         anchors.fill: parent
-        anchors.margins: Theme.horizontalPageMargin
 
+        PageHeader{
+            title: qsTr("Settings")
+        }
         SectionHeader {
             text: qsTr("Search settings")
         }
@@ -92,6 +95,14 @@ Page {
                 } else {
                     database.storeData("hints", "false", "false")
                 }
+            }
+        }
+        IconTextItem {
+            title: qsTr("Delete history")
+            iconSource: "image://theme/icon-m-delete"
+
+            onClicked: {
+                database.deleteFavorites()
             }
         }
     }

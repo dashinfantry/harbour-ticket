@@ -20,7 +20,7 @@ Dialog {
     property bool returnDateValueIsSet: false
     property variant currentSearch: ({})
 
-    canAccept: true //origin.length >= 2&&destination.length >= 2&&departureDateValueIsSet
+    canAccept: segmentsModel.count > 1
 
     ListModel {
         id: classSeatsModel
@@ -51,6 +51,7 @@ Dialog {
         property string destinationAirport
         property date departureDate: new Date()
         property string dateText
+        property bool departureDateValueIsSet: false
     }
 
     Component {
@@ -121,7 +122,7 @@ Dialog {
                             internal.dateText = dialog.dateText
                             departureDate.value = dialog.dateText
                             internal.departureDate = dialog.date
-//                            departureDateValueIsSet = true
+                            internal.departureDateValueIsSet = true
                         }
 
                         //Depart date can not be from past
@@ -144,6 +145,7 @@ Dialog {
                     id: cancelButton
 
                     anchors.left: parent.left
+                    anchors.leftMargin: Theme.horizontalPageMargin
                     text: "Cancel"
 
                     onClicked: {
@@ -154,7 +156,9 @@ Dialog {
                     id: acceptButton
 
                     anchors.right: parent.right
+                    anchors.rightMargin: Theme.horizontalPageMargin
                     text: "Accept"
+                    enabled: internal.departureDateValueIsSet && internal.destination !== "" && internal.origin !== ""
 
                     onClicked: {
                         segmentsModel.append({originIata: internal.origin,
@@ -164,6 +168,11 @@ Dialog {
                                                  originFullText: internal.originAirport,
                                                  destinationFullText: internal.destinationAirport
                                              })
+                        labelOrigin.text = qsTr('Origin:')
+                        labelDest.text = qsTr('Destination:')
+                        internal.origin = ""
+                        internal.destination = ""
+                        internal.departureDateValueIsSet = false
                         drawer.hide()
                     }
                 }
@@ -207,11 +216,10 @@ Dialog {
                 width: parent.width
                 model: segmentsModel
                 delegate: ListItem {
-                    contentHeight: Theme.itemSizeMedium
+                    contentHeight: Theme.itemSizeLarge
 
                     Text {
                         anchors.top: parent.top
-                        anchors.topMargin: Theme.paddingSmall
                         anchors.left: parent.left
                         anchors.leftMargin: Theme.horizontalPageMargin
                         anchors.right: parent.right
@@ -229,9 +237,12 @@ Dialog {
                         color: Theme.primaryColor
                         text: dateFormatted
                     }
+                    Separator {
+                        width: parent.width
+                    }
                 }
 
-            footer: StartScreenItem {
+            footer: IconTextItem {
                 width: parent.width
                 title: "Add segment"
                 iconSource: "image://theme/icon-m-add"

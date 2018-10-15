@@ -21,7 +21,7 @@ Page {
 
     BusyIndicator {
         id: busyIndicator
-        running: true
+//        running: true
         size: BusyIndicatorSize.Large
         anchors.centerIn: parent
     }
@@ -59,19 +59,19 @@ Page {
             type: "simple"
             name: qsTr("One way search")
             descr: qsTr("One way ticket")
-            image: "image://theme/icon-m-home"
+            image: "../images/OneWayTrip.svg"
         }
         ListElement {
             type: "return"
             name: qsTr("Round trip search")
             descr: qsTr("Round trip")
-            image: "image://theme/icon-m-location"
+            image: "../images/RoundTrip.svg"
         }
         ListElement {
             type: "complex"
             name: qsTr("Complex search")
             descr: qsTr("Fly with more than two stops")
-            image: "image://theme/icon-m-gps"
+            image: "../images/ComplexTrip.svg"
         }
     }
 
@@ -84,8 +84,25 @@ Page {
 //                console.log(favorites[id])
                 var t = JSON.parse(favorites[id])
 //                console.log("origin", t.segments[0].origin)
-                var tmp = {"fav_origin": t.segments[0].origin, "fav_destination": t.segments[0].destination, "fav_departureDate": t.departureDate,
-                            "oneWay": t.oneWay, "adults": t.passengers.adults, "children": t.passengers.children, "tripClass": t.tripClass, "directFlight": t.oneWay}
+                var originName = t.originName ?
+                            t.originName :
+                            "Undefined"
+
+                var destinationName = t.destinationName ?
+                            t.destinationName :
+                            "Undefined"
+                var tmp = {
+                    "fav_origin": t.segments[0].origin,
+                    "fav_destination": t.segments[0].destination,
+                    "originName": originName,
+                    "destinationName": destinationName,
+                    "fav_departureDate": t.departureDate,
+                    "oneWay": t.roundTrip,
+                    "adults": t.passengers.adults,
+                    "children": t.passengers.children,
+                    "tripClass": t.tripClass,
+                    "directFlight": t.directFlight
+                }
                 favoritesModel.append(tmp)
             }
         }
@@ -105,6 +122,8 @@ Page {
             currentIp = data
 
             console.log("My IP", currentIp)
+
+            getFavorites()
 
 //            var url = "http://nano.aviasales.ru/places/top_" + language + ".json"
 //            Utils.performRequest("GET", url, getAirportsInfo)
@@ -148,7 +167,7 @@ Page {
             if (parsed.meta.uuid) {
 //                console.log(JSON.stringify(parsed))
                 uuid = parsed.meta.uuid
-                requestTickets.start()
+//                requestTickets.start()
                 var url = "http://api.travelpayouts.com/v1/flight_search_results?uuid=" + uuid
                 Utils.performRequest("GET", url, getResults)
             }
@@ -207,11 +226,10 @@ Page {
             spacing: Theme.paddingMedium
             interactive: false
             model: searchTypesList
-            delegate: IconTextSwitch {
-                automaticCheck: false
-                text: name
-                icon.source: image
-                description: descr
+            delegate: IconTextItem {
+                title: name
+                iconSource: image
+//                description: descr
                 onClicked: {
                     if (type === "complex") {
                         pageStack.push(Qt.resolvedUrl("../delegates/ComplexSearchDialog.qml"), {currentIp: root.currentIp})
@@ -231,7 +249,7 @@ Page {
             anchors { top: searchTypes.bottom; left: parent.left; right: parent.right; bottom: offers.top }
             spacing: Theme.paddingSmall
             clip: true
-            visible: !busyIndicator.running
+            visible: true //!busyIndicator.running
             header: SectionHeader {
                 text: qsTr("Search history")
             }
@@ -242,30 +260,34 @@ Page {
 
                 origin: fav_origin
                 destination: fav_destination
-                airportOriginFullNameText: app.airportsInfo[fav_origin].name
-                airportDestinationFullNameText: app.airportsInfo[fav_destination].name
+                airportOriginFullNameText: originName
+                airportDestinationFullNameText: destinationName
                 departureDate: fav_departureDate
 
                 onClicked: {
-//                    root.origin = fav_origin
-//                    root.originText = app.airportsInfo[fav_origin].name + " (" + fav_origin + ")"
-//                    root.destination = fav_destination
-//                    root.destinationText = app.airportsInfo[fav_destination].name + " (" + fav_destination + ")"
                     var currDate = new Date()
                     departureSelectedDate = new Date(fav_departureDate)
                     if (currDate > departureSelectedDate) {
                         departureSelectedDate = currDate
                     }
                     app.newSearchAllowed = false
-
-//                    var oneway = typeof oneWay === "undefined" ? oneWay:true
-                    pageStack.push(Qt.resolvedUrl("../delegates/SearchDialog.qml"), {currentIp: root.currentIp, oneWay: true, direct: directFlight,
-                                       origin: fav_origin, destination: fav_destination,
-                                       originText: app.airportsInfo[fav_origin].name + " (" + fav_origin + ")",
-                                       destinationText: app.airportsInfo[fav_destination].name + " (" + fav_destination + ")",
-                                       passengers: adults, childrens: children,
-                                       departureSelectedDate: departureSelectedDate, seat: tripClass,
-                                       departureDateValue: Utils.getFullDate(departureSelectedDate), departureDateValueIsSet: true})
+                    pageStack.push(Qt.resolvedUrl("../delegates/SearchDialog.qml"), {
+                                       currentIp: root.currentIp,
+                                       oneWay: !oneWay,
+                                       direct: directFlight,
+                                       origin: fav_origin,
+                                       destination: fav_destination,
+                                       originText: originName + " (" + fav_origin + ")",
+                                       destinationText: destinationName + " (" + fav_destination + ")",
+                                       originAirport: originName + " (" + fav_origin + ")",
+                                       destinationAirport: destinationName + " (" + fav_destination + ")",
+                                       passengers: adults,
+                                       childrens: children,
+                                       departureSelectedDate: departureSelectedDate,
+                                       seat: tripClass,
+                                       departureDateValue: Utils.getFullDate(departureSelectedDate),
+                                       departureDateValueIsSet: !oneWay
+                                   })
                 }
                 menu: ContextMenu {
                     MenuItem {
@@ -287,6 +309,12 @@ Page {
                          favoritesModel.remove(idx)
                      } )
                  }
+
+                 ViewPlaceholder {
+                     anchors.centerIn: parent
+                     enabled: favoritesModel.count == 0
+                     text: qsTr("Search history is empty")
+                 }
             }
 
         }
@@ -305,7 +333,7 @@ Page {
 //            }
 //        }
 
-        StartScreenItem {
+        IconTextItem {
             id: offers
 
             anchors.bottom: offers1.top
@@ -313,6 +341,7 @@ Page {
             width: parent.width
             title: "Special offers"
             iconSource: "image://theme/icon-m-gps"
+            enabled: false
 
             onClicked: {
                 var url = "http://www.jetradar.com/deals.atom/"
@@ -320,7 +349,7 @@ Page {
             }
         }
 
-        StartScreenItem {
+        IconTextItem {
             id: offers1
 
             anchors.bottom: parent.bottom
@@ -328,6 +357,7 @@ Page {
             width: parent.width
             title: "Special offers1"
             iconSource: "image://theme/icon-m-gps"
+            enabled: false
 
             onClicked: {
                 var url = "http://api.travelpayouts.com/v2/prices/special-offers?token=" + Utils.token

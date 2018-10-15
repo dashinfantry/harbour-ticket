@@ -43,4 +43,4 @@ DISTFILES += \
     qml/pages/*.qml \
     qml/delegates/*.qml \
     qml/utils/* \
-    qml/delegates/ComplexSearchDialog.qml
+    qml/images/*

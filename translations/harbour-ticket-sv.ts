@@ -104,10 +104,6 @@
         <translation type="unfinished">AvgÃ¥ngsdatum:</translation>
     </message>
     <message>
-        <source>One way ticket</source>
-        <translation type="unfinished">Enkel resa</translation>
-    </message>
-    <message>
         <source>Return date:</source>
         <translation type="unfinished">Returresedatum:</translation>
     </message>
@@ -229,6 +225,14 @@
         <source>TH</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Delete history</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">InstÃ¤llningar</translation>
+    </message>
 </context>
 <context>
     <name>StartPage</name>
@@ -280,75 +284,70 @@
         <source>Fly with more than two stops</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Search history is empty</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TicketInfoDelegate</name>
-    <message>
-        <source> m</source>
-        <translation>m</translation>
-    </message>
-    <message>
-        <source> h </source>
-        <translation>t </translation>
-    </message>
-    <message>
-        <source>Travel duration:</source>
-        <translation>Restid:</translation>
-    </message>
-    <message>
-        <source>Departure date/time:</source>
-        <translation>AvgÃ¥ng datum/tid:</translation>
-    </message>
     <message>
         <source>Direct</source>
         <translation>Direkt</translation>
     </message>
     <message>
-        <source>Arrival date/time:</source>
-        <translation>Ankomst datum/tid:</translation>
+        <source>Stops: </source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Transfers:</source>
-        <translation type="unfinished"></translation>
+        <source>Trip duration: </source>
+        <translation type="unfinished">Restid: </translation>
     </message>
 </context>
 <context>
     <name>TicketPage</name>
     <message>
-        <source>m</source>
-        <translation>m</translation>
-    </message>
-    <message>
-        <source>h </source>
-        <translation>t </translation>
-    </message>
-    <message>
         <source>Buy</source>
         <translation>KÃ¶p</translation>
-    </message>
-    <message>
-        <source>Destination: </source>
-        <translation>Destination:</translation>
-    </message>
-    <message>
-        <source>Flight number: </source>
-        <translation>Flyg nummer: </translation>
     </message>
     <message>
         <source>Trip duration: </source>
         <translation>Restid: </translation>
     </message>
     <message>
-        <source>Depature: </source>
-        <translation>AvgÃ¥ng: </translation>
+        <source>&lt;b&gt;Flight number:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Origin: </source>
-        <translation>AvgÃ¥ngsplats: </translation>
+        <source>&lt;br&gt;&lt;b&gt;Aircraft:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Arrival: </source>
-        <translation>Ankomst: </translation>
+        <source>&lt;b&gt;Origin:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Depature:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Destination:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Arrival:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Utils</name>
+    <message>
+        <source> h </source>
+        <translation type="unfinished">t </translation>
+    </message>
+    <message>
+        <source> m</source>
+        <translation type="unfinished">m</translation>
     </message>
 </context>
 </TS>

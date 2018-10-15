@@ -1,6 +1,7 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
 
+import "../utils/"
 import "../utils/Utils.js" as Utils
 
 ListItem {
@@ -15,21 +16,19 @@ ListItem {
     property int transfers_count: 0
 
     property variant proposal: ({})
+    property variant airports: ({})
+    property variant airlines: ({})
 
 //    property bool   direct: false
 
-    property variant ticketInfo: ({})
     property variant currencyRatesInfo: ({})
 
-    height: Theme.itemSizeSmall + orig_dest.height + datesColumn.height
-    contentHeight:  Theme.itemSizeSmall + orig_dest.height + datesColumn.height
+    height: Theme.itemSizeSmall + orig_dest.height + ticketPrice.height
+    contentHeight:  Theme.itemSizeSmall + orig_dest.height + ticketPrice.height
     width: parent.width
 
-    function fromMinToHours(value) {
-        var hours = Math.floor( value / 60);
-        var minutes = value % 60;
-
-        return hours + qsTr(" h ") + minutes + qsTr(" m")
+    DataBase {
+        id: database
     }
 
     QtObject {
@@ -49,8 +48,8 @@ ListItem {
             flyNumbers.push(t)
         }
         internal.flyNumber = flyNumbers.filter(Utils.onlyUnique).join(" - ")
-        internal.departure_date = Utils.fromUnixToLocalDateTime(segment.flight[0].local_departure_timestamp)
-        internal.arrival_date = Utils.fromUnixToLocalDateTime(segment.flight[0].local_arrival_timestamp)
+        internal.departure_date = Utils.fromUnixToShortFormat(segment.flight[0].local_departure_timestamp, database.language)
+        internal.arrival_date = Utils.fromUnixToShortFormat(segment.flight[0].local_arrival_timestamp, database.language)
     }
 
     Label {
@@ -74,47 +73,89 @@ ListItem {
         fillMode: Image.PreserveAspectFit
     }
 
-    Text {
+    Label {
         anchors.left: logo.right
         anchors.leftMargin: Theme.horizontalPageMargin
-        anchors.bottom: logo.bottom
+        anchors.top: logo.top
         color: Theme.secondaryColor
-
-        text: internal.flyNumber
+        text: airlines[airlineIata].name
     }
 
+//    Text {
+//        anchors.left: logo.right
+//        anchors.leftMargin: Theme.horizontalPageMargin
+//        anchors.bottom: logo.bottom
+//        color: Theme.secondaryColor
+
+//        text: internal.flyNumber
+//    }
+
+//    Column {
+//        id: datesColumn
+//        width: parent.width - ticketPrice.width
+//        anchors.top: logo.bottom
+//        anchors.topMargin: Theme.paddingSmall
+//        spacing: Theme.paddingSmall
+//        DetailItem {
+//            leftMargin: Theme.paddingSmall
+//            label: qsTr("Departure date/time:")
+//            value: internal.departure_date//Utils.fromUnixToLocalDateTime(date_from)
+//        }
+//        DetailItem {
+//            visible: date_to?true:false
+//            leftMargin: Theme.paddingSmall
+//            label: qsTr("Arrival date/time:")
+//            value: internal.arrival_date//Utils.fromUnixToLocalDateTime(date_to)
+//        }
+//        DetailItem {
+//            leftMargin: Theme.paddingSmall
+//            label: qsTr("Trip duration:")
+//            value: Utils.fromMinToHours(fly_duration)
+//        }
+//        DetailItem {
+//            leftMargin: Theme.paddingSmall
+//            label: qsTr("Transfers:")
+//            value: transfers_count > 0?transfers_count:qsTr("Direct")
+//        }
+//    }
+
     Column {
-        id: datesColumn
-        width: parent.width - ticketPrice.width
         anchors.top: logo.bottom
-        anchors.topMargin: Theme.paddingSmall
-        spacing: Theme.paddingSmall
-        DetailItem {
-            leftMargin: Theme.paddingSmall
-            label: qsTr("Departure date/time:")
-            value: internal.departure_date//Utils.fromUnixToLocalDateTime(date_from)
+        anchors.left: parent.left
+        anchors.right: ticketPrice.left
+        anchors.margins: Theme.paddingMedium
+    Row {
+        spacing: Theme.horizontalPageMargin
+        Text {
+            font.pixelSize: Theme.fontSizeTiny
+            color: Theme.secondaryColor
+            text: internal.departure_date
         }
-        DetailItem {
-            visible: date_to?true:false
-            leftMargin: Theme.paddingSmall
-            label: qsTr("Arrival date/time:")
-            value: internal.arrival_date//Utils.fromUnixToLocalDateTime(date_to)
+        Text {
+            font.pixelSize: Theme.fontSizeTiny
+            color: Theme.secondaryColor
+            text: internal.arrival_date
         }
-        DetailItem {
-            leftMargin: Theme.paddingSmall
-            label: qsTr("Travel duration:")
-            value: fromMinToHours(fly_duration)
+    }
+    Row {
+        spacing: Theme.horizontalPageMargin
+        Text {
+            font.pixelSize: Theme.fontSizeTiny
+            color: Theme.secondaryColor
+            text: qsTr("Trip duration: ") + Utils.fromMinToHours(fly_duration)
         }
-        DetailItem {
-            leftMargin: Theme.paddingSmall
-            label: qsTr("Transfers:")
-            value: transfers_count > 0?transfers_count:qsTr("Direct")
+        Text {
+            font.pixelSize: Theme.fontSizeTiny
+            color: Theme.secondaryColor
+            text: qsTr("Stops: ") + (transfers_count > 0?transfers_count:qsTr("Direct"))
         }
+    }
     }
 
     Label {
         id: ticketPrice
-        anchors.verticalCenter: datesColumn.verticalCenter
+        anchors.top: logo.verticalCenter
+        anchors.topMargin: Theme.paddingLarge
         anchors.right: parent.right
         anchors.rightMargin: Theme.paddingMedium
         font.bold: true
@@ -129,7 +170,14 @@ ListItem {
     }
 
     onClicked: {
-        pageStack.push(Qt.resolvedUrl("../pages/TicketPage.qml"), {"ticket": ticketInfo, "_search_id": search_id, "currencyRates": currencyRatesInfo, "_currency": _currency})
+        pageStack.push(Qt.resolvedUrl("../pages/TicketPage.qml"), {
+                           "ticket": proposal,
+                           "_search_id": search_id,
+                           "currencyRates": currencyRatesInfo,
+                           "_currency": _currency,
+                           "airports": airports,
+                           "airlines": airlines
+                       })
     }
 }
 

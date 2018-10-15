@@ -7,6 +7,8 @@ BackgroundItem {
     property string iconSource: "image://theme/icon-m-gps"
     property string title: ""
 
+    property alias fontSize: label.font.pixelSize
+
     height: Theme.itemSizeSmall
 
     Image {
@@ -32,5 +34,8 @@ BackgroundItem {
 
         text: title
         color: Theme.secondaryColor
+        wrapMode: Text.WordWrap
+        truncationMode: TruncationMode.Fade
+        maximumLineCount: 2
     }
 }

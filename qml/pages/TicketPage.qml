@@ -13,11 +13,9 @@ Page {
 
     property string _currency
 
-    property string _url
     property string _search_id
-    property string _price
-//    property variant airportsInfo: ({})
-    property string language: "en"
+    property variant airports: ({})
+    property variant airlines: ({})
 
     function buyTicket(data) {
         if (data !== "error") {
@@ -31,54 +29,12 @@ Page {
         }
     }
 
-    function fromMinToHours(value) {
-        var hours = Math.floor( value / 60);
-        var minutes = value % 60;
+    QtObject {
+        id: internal
 
-        return hours + qsTr("h ") + minutes + qsTr("m")
-    }
-
-    function getAirportsInfo(data) {
-        if (data !== "error") {
-            var parsed = JSON.parse(data)
-            var _airportsInfo = {}
-            for(var i in parsed) {
-                if(parsed[i].airport_name != "") {
-                    _airportsInfo[parsed[i].iata] = {"iata": parsed[i].iata, "name": parsed[i].name, "coordinates": parsed[i].coordinates}
-                }
-            }
-            airportsInfo = _airportsInfo
-            var terms = Object.keys(ticket.terms)
-            for (var a in terms) {
-                var term = ticket.terms[terms[a]]
-                var convertedPrice = (term.unified_price/currencyRates[_currency.toLowerCase()]).toFixed(0)
-                _price = convertedPrice + " " + _currency.toUpperCase()
-                _url = term.url
-            }
-            for (var id in ticket.segment) {
-                var _flights = ticket.segment[id].flight
-                for (var j in _flights) {
-                    var flight = _flights[j]
-    //                console.log(JSON.stringify(flight))
-                    flights.append({
-                                        "departure": airportsInfo[flight.departure].name,
-                                        "arrival": airportsInfo[flight.arrival].name,
-                                        "departure_time": flight.local_departure_timestamp,
-                                        "arrival_time": flight.local_arrival_timestamp,
-                                        "flight_number": flight.number,
-                                       "carrier": flight.operating_carrier,
-                                       "duration": flight.duration
-                                   })
-                }
-            }
-        }
-        busyIndicator.running = false
-        content.visible = true
-
-    }
-
-    function getLink(data) {
-
+        property string price
+        property string language: "en"
+        property string url
     }
 
     DataBase {
@@ -100,17 +56,21 @@ Page {
         var terms = Object.keys(ticket.terms)
         for (var a in terms) {
             var term = ticket.terms[terms[a]]
-            var convertedPrice = (term.unified_price/currencyRates[term.currency]).toFixed(0)
-            _price = convertedPrice + " " + term.currency.toUpperCase()
-            _url = term.url
+            if (database.convertCurrency) {
+                internal.price = (term.unified_price/currencyRates[database.currency]).toFixed(0) + " " + database.currency.toUpperCase()
+            }
+
+//            var convertedPrice = (term.unified_price/currencyRates[term.currency]).toFixed(0)
+//            _price = convertedPrice + " " + term.currency.toUpperCase()
+            internal.url = term.url
         }
         for (var id in ticket.segment) {
             var _flights = ticket.segment[id].flight
             for (var j in _flights) {
                 var flight = _flights[j]
 //                console.log(JSON.stringify(flight))
-                var depart = app.airportsInfo[flight.departure]?app.airportsInfo[flight.departure].name:"" + " (" + flight.departure + ")"
-                var arriv = app.airportsInfo[flight.arrival]?app.airportsInfo[flight.arrival].name:"" + " (" + flight.arrival + ")"
+                var depart = airports[flight.departure].name + " (" + flight.departure + ")"
+                var arriv = airports[flight.arrival].name + " (" + flight.arrival + ")"
                 flights.append({
                                    "departure": depart,
                                    "arrival": arriv,
@@ -118,7 +78,8 @@ Page {
                                    "arrival_time": flight.local_arrival_timestamp,
                                    "flight_number": flight.number,
                                    "carrier": flight.operating_carrier,
-                                   "duration": flight.duration
+                                   "duration": flight.duration,
+                                   "aircraft": flight.aircraft?flight.aircraft:flight.equipment
                                })
             }
         }
@@ -132,7 +93,7 @@ Page {
         visible: false
         PageHeader {
             id: pageHeader
-            title: _price
+            title: internal.price
         }
         ListView {
             id: listView
@@ -160,49 +121,82 @@ Page {
                     //source: iata?"http://ios.aviasales.ru/logos/xxhdpi/"+ iata +".png":""
                     fillMode: Image.PreserveAspectFit
                 }
-                Label {
+                Text {
+                    anchors.left: logo.right
+                    anchors.leftMargin: Theme.horizontalPageMargin
+                    anchors.verticalCenter: logo.verticalCenter
+                    color: Theme.secondaryColor
+                    font.bold: true
+
+                    text: airlines[carrier].name
+
+                }
+                Text {
                     id: flightNumber
                     anchors.left: parent.left
                     anchors.leftMargin: Theme.paddingMedium
                     anchors.top: logo.bottom
-                    text: qsTr("Flight number: ") + flight_number
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    color: Theme.secondaryColor
+                    text: qsTr("<b>Flight number:</b> ") + carrier + flight_number + qsTr("<br><b>Aircraft:</b> ") + aircraft
                 }
-                Label {
+                Text {
                     id: origin
                     anchors.left: parent.left
                     anchors.leftMargin: Theme.paddingMedium
+                    anchors.right: parent.left
+                    anchors.rightMargin: Theme.paddingMedium
                     anchors.top: flightNumber.bottom
-                    text: qsTr("Origin: ") + departure
+                    font.pixelSize: Theme.fontSizeSmall
+                    color: Theme.secondaryColor
+                    text: qsTr("<b>Origin:</b> ") + departure
+                    wrapMode: Text.WordWrap
                 }
                 Text {
                     id: departureDate
                     anchors.left: parent.left
                     anchors.leftMargin: Theme.paddingMedium
+                    anchors.right: parent.left
+                    anchors.rightMargin: Theme.paddingMedium
                     anchors.top: origin.bottom
-                    text: qsTr("Depature: ") + Utils.fromUnixToLocalDateTime(departure_time)
+                    font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.secondaryColor
+                    text: qsTr("<b>Depature:</b> ") + Utils.fromUnixToShortFormat(departure_time)
+                    wrapMode: "WordWrap"
                 }
-                Label {
+                Text {
                     id: destination
                     anchors.left: parent.left
                     anchors.leftMargin: Theme.paddingMedium
+                    anchors.right: parent.left
+                    anchors.rightMargin: Theme.paddingMedium
                     anchors.top: departureDate.bottom
-                    text: qsTr("Destination: ") + arrival
+                    font.pixelSize: Theme.fontSizeSmall
+                    color: Theme.secondaryColor
+                    text: qsTr("<b>Destination:</b> ") + arrival
+                    wrapMode: Text.WordWrap
                 }
                 Text {
                     id: arrivalDate
                     anchors.left: parent.left
                     anchors.leftMargin: Theme.paddingMedium
+                    anchors.right: parent.left
+                    anchors.rightMargin: Theme.paddingMedium
                     anchors.top: destination.bottom
-                    text: qsTr("Arrival: ") + Utils.fromUnixToLocalDateTime(arrival_time)
+                    font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.secondaryColor
+                    text: qsTr("<b>Arrival:</b> ") + Utils.fromUnixToShortFormat(arrival_time)
                 }
-                Label {
+                Text {
                     id: tripDuration
                     anchors.left: parent.left
                     anchors.leftMargin: Theme.paddingMedium
+                    anchors.right: parent.left
+                    anchors.rightMargin: Theme.paddingMedium
                     anchors.top: arrivalDate.bottom
-                    text: qsTr("Trip duration: ") + fromMinToHours(duration)
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    color: Theme.secondaryColor
+                    text: qsTr("Trip duration: ") + Utils.fromMinToHours(duration)
                 }
             }
         }
@@ -215,7 +209,7 @@ Page {
             text: qsTr("Buy")
 
             onClicked: {
-                var url = "http://api.travelpayouts.com/v1/flight_searches/" + _search_id + "/clicks/" + _url + ".json"
+                var url = "http://api.travelpayouts.com/v1/flight_searches/" + _search_id + "/clicks/" + internal.url + ".json"
                 Utils.performRequest("GET", url, buyTicket)
             }
         }

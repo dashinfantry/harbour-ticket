@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Svg Vector Icons : http://www.onlinewebfonts.com/icon -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 1000 1000"
+   enable-background="new 0 0 1000 1000"
+   xml:space="preserve"
+   id="svg16"
+   sodipodi:docname="OneWayTrip.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"><defs
+   id="defs20" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1245"
+   inkscape:window-height="969"
+   id="namedview18"
+   showgrid="false"
+   inkscape:zoom="0.22945746"
+   inkscape:cx="-11.203402"
+   inkscape:cy="235.21109"
+   inkscape:window-x="0"
+   inkscape:window-y="27"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg16" />
+<metadata
+   id="metadata2"> Svg Vector Icons : http://www.onlinewebfonts.com/icon <rdf:RDF><cc:Work
+     rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+       rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata>
+<g
+   id="g844"
+   style="fill:#008080"><g
+     transform="translate(0,0.00262973)"
+     id="g838"
+     style="fill:#008080"><path
+       d="m 718.44,264.91 c -18.22,4.11 -37.62,13.91 -76.22,38.79 -78.96,50.35 -157.53,99.53 -159.29,99.53 -0.98,0 -58.98,-19.99 -128.92,-44.28 -69.95,-24.49 -127.94,-44.48 -129.12,-44.48 -1.76,0 -60.35,36.25 -64.27,39.77 -0.78,0.78 37.23,35.46 84.45,77 47.22,41.54 86.99,77 88.37,78.57 1.96,2.35 -9.99,10.97 -75.24,55.06 L 180.61,617 117.52,593.29 54.63,569.78 45.62,576.05 C 12.5,599.56 7.8,603.67 10.74,605.83 c 1.57,1.17 40.17,31.15 85.62,66.81 45.65,35.46 84.45,64.66 86.21,64.46 1.76,0 39.38,-23.71 83.47,-52.71 371.48,-243.73 469.45,-310.35 498.25,-338.56 19.01,-18.61 24.49,-37.62 15.87,-54.86 -11.76,-23.32 -33.31,-32.53 -61.72,-26.06 z"
+       id="path4"
+       inkscape:connector-curvature="0"
+       style="stroke-width:0.1;fill:#008080" /><path
+       d="m 514.48,566.45 c -33.7,21.75 -60.93,40.17 -60.74,40.95 0.39,1.76 168.11,102.08 168.89,101.1 0.2,-0.39 3.13,-12.74 6.27,-27.43 l 5.88,-27.04 -27.82,-63.09 c -15.28,-34.68 -28.61,-63.29 -29.58,-63.48 -0.99,-0.39 -29.2,17.24 -62.9,38.99 z"
+       id="path8"
+       inkscape:connector-curvature="0"
+       style="stroke-width:0.1;fill:#008080" /></g><path
+     style="stroke-width:0.1;fill:#008080"
+     inkscape:connector-curvature="0"
+     id="path10"
+     d="m 890.66,427.6361 c -5.29,4.51 -5.49,5.68 -6.07,24.49 -0.59,16.26 -1.37,19.79 -3.92,20.57 -1.96,0.39 -51.73,6.86 -110.9,14.11 -59.17,7.25 -106.78,13.52 -105.8,13.91 0.98,0.2 48,6.27 104.63,13.32 56.63,6.86 105.8,13.13 109.33,13.72 l 6.27,1.18 v 17.43 c 0,15.67 0.39,17.83 4.9,23.12 5.68,6.86 13.72,9.21 20.77,6.47 4.51,-1.76 75.63,-62.9 78.57,-67.6 0.78,-1.18 1.57,-5.09 1.57,-8.43 0,-8.23 -2.55,-10.78 -44.87,-47.41 -30.96,-26.84 -34.88,-29.59 -41.54,-29.59 -5.1,0 -9.21,1.57 -12.94,4.71 z" /></g>
+</svg>

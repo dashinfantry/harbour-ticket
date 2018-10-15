@@ -104,10 +104,6 @@
         <translation type="unfinished">Дата вылета:</translation>
     </message>
     <message>
-        <source>One way ticket</source>
-        <translation type="unfinished">Билет в один конец</translation>
-    </message>
-    <message>
         <source>Return date:</source>
         <translation type="unfinished">Дата возвращения:</translation>
     </message>
@@ -229,6 +225,14 @@
         <source>TH</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Delete history</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Настройки</translation>
+    </message>
 </context>
 <context>
     <name>StartPage</name>
@@ -280,75 +284,70 @@
         <source>Fly with more than two stops</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Search history is empty</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TicketInfoDelegate</name>
     <message>
-        <source>Departure date/time:</source>
-        <translation>Вылет:</translation>
-    </message>
-    <message>
-        <source>Arrival date/time:</source>
-        <translation>Прибытие:</translation>
-    </message>
-    <message>
-        <source> h </source>
-        <translation>ч </translation>
-    </message>
-    <message>
-        <source> m</source>
-        <translation> м</translation>
-    </message>
-    <message>
-        <source>Travel duration:</source>
-        <translation>Время в пути:</translation>
-    </message>
-    <message>
-        <source>Transfers:</source>
-        <translation>Пересадки:</translation>
-    </message>
-    <message>
         <source>Direct</source>
         <translation>Прямой</translation>
+    </message>
+    <message>
+        <source>Stops: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Trip duration: </source>
+        <translation type="unfinished">Продолжительность:</translation>
     </message>
 </context>
 <context>
     <name>TicketPage</name>
     <message>
-        <source>Flight number: </source>
-        <translation>Номер рейса:</translation>
-    </message>
-    <message>
         <source>Buy</source>
         <translation>Купить</translation>
-    </message>
-    <message>
-        <source>h </source>
-        <translation>ч </translation>
-    </message>
-    <message>
-        <source>m</source>
-        <translation>м</translation>
-    </message>
-    <message>
-        <source>Origin: </source>
-        <translation>Вылет из:</translation>
-    </message>
-    <message>
-        <source>Destination: </source>
-        <translation>Назначение:</translation>
     </message>
     <message>
         <source>Trip duration: </source>
         <translation>Продолжительность:</translation>
     </message>
     <message>
-        <source>Depature: </source>
-        <translation>Вылет:</translation>
+        <source>&lt;b&gt;Flight number:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Arrival: </source>
-        <translation>Прибытие:</translation>
+        <source>&lt;br&gt;&lt;b&gt;Aircraft:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Origin:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Depature:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Destination:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Arrival:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Utils</name>
+    <message>
+        <source> h </source>
+        <translation type="unfinished">ч </translation>
+    </message>
+    <message>
+        <source> m</source>
+        <translation type="unfinished"> м</translation>
     </message>
 </context>
 </TS>

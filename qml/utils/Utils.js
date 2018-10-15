@@ -62,9 +62,19 @@ function loadLocalFile(location, callback) {
 
 function fromUnixToLocalDateTime(unixFormat) {
     var date = new Date(unixFormat * 1000)
-//    return getFullDate(date) + ", " + getTime(date)
-//    return date.toLocaleDateString() + " " + date.toLocaleTimeString()
     return date.toLocaleString("en-US")
+}
+
+function fromUnixToShortFormat(unixFormat, locale) {
+    var date  = new Date(unixFormat * 1000)
+    var dateStr = date.toLocaleDateString(locale)
+    var minutes = date.getMinutes()
+    if (minutes < 10) {
+        minutes = "0" + minutes
+    }
+
+    var timeStr = date.getHours() + ":" + minutes
+    return dateStr + ", " + timeStr
 }
 
 function getTime(date) {
@@ -95,6 +105,13 @@ function getShortDate(date) {
         result += (date.getMonth() + 1)
     }
     return result
+}
+
+function fromMinToHours(value) {
+    var hours = Math.floor( value / 60);
+    var minutes = value % 60;
+
+    return hours + qsTr(" h ") + minutes + qsTr(" m")
 }
 
 function sortDict(dict) {
