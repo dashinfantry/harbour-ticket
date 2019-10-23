@@ -105,6 +105,17 @@ Page {
                 database.deleteFavorites()
             }
         }
+        TextSwitch {
+            id: browser
+            text: qsTr("Open links in browser")
+            onCheckedChanged: {
+                if (checked) {
+                    database.storeData("browser", "true", "true")
+                } else {
+                    database.storeData("browser", "false", "false")
+                }
+            }
+        }
     }
 
 }

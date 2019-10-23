@@ -13,6 +13,7 @@ ListItem {
     property string destination: ""
 
     clip: true
+    contentHeight: Theme.itemSizeLarge
 
     Text {
         id: airportsIata
@@ -34,7 +35,8 @@ ListItem {
         text: "" //app.airportsInfo[fav_origin].name
         color: Theme.secondaryColor
         font.pixelSize: Theme.fontSizeTiny
-        maximumLineCount: 1
+        maximumLineCount: 2
+        wrapMode: Text.WordWrap
         horizontalAlignment: Text.AlignRight
     }
     Text {
@@ -48,13 +50,15 @@ ListItem {
         text: "" //app.airportsInfo[fav_destination].name
         color: Theme.secondaryColor
         font.pixelSize: Theme.fontSizeTiny
-        maximumLineCount: 1
+        maximumLineCount: 2
+        wrapMode: Text.WordWrap
     }
     Text {
         id: departureText
         anchors.left: parent.left
         anchors.leftMargin: Theme.horizontalPageMargin
-        anchors.top: airportDestinationFullName.bottom
+        anchors.top: airportOriginFullName.bottom
+        anchors.topMargin: Theme.paddingSmall
         text: qsTr("Departure: ") + Utils.getFullDate(new Date(departureDate))
         color: Theme.secondaryColor
         font.pixelSize: Theme.fontSizeTiny

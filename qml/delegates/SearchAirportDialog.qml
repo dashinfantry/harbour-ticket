@@ -1,6 +1,8 @@
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 
+import dataproxy.Data 1.0
+
 import "../utils/Utils.js" as Utils
 import "../utils"
 
@@ -12,15 +14,24 @@ Dialog {
     property string cityIata
 
     onBackNavigationChanged: {
-        airportsModel.clear()
+        serachAirports.clearAirportsList()
+    }
+
+    Component.onCompleted: {
+        searchField.focus = true
+    }
+
+
+    Data {
+        id: serachAirports
+
+        onAirportModelChanged: {
+            internal.loadData = false
+        }
     }
 
     DataBase {
         id: database
-    }
-
-    ListModel {
-        id: airportsModel
     }
 
     QtObject {
@@ -28,17 +39,27 @@ Dialog {
 
         property bool loadData: false
         property bool finishSearching: false
+
+        function searchAirport() {
+            var searchText = searchField.text.replace(/ /g, '%20')
+            var lang = database.language.toLowerCase()
+            if (lang !== "en" || lang !== "ru") {
+                lang = "en"
+            }
+
+            serachAirports.getAirportsList(searchText)
+            internal.loadData = true
+        }
     }
 
-    function getCityInfo(data) {
-        if (data !== "error") {
-            var parsed = JSON.parse(data)
-            if (Object.keys(parsed).length > 0) {
-                airportsModel.append(parsed)
-            }
+    Timer {
+        id: startSearch
+        interval: 3000
+        repeat: false
+
+        onTriggered: {
+            internal.searchAirport()
         }
-        internal.loadData = false
-        internal.finishSearching = true
     }
 
     function getName(iata) {
@@ -55,19 +76,18 @@ Dialog {
             anchors.top: parent.top
             width: parent.width
             placeholderText: qsTr('Search airports:')
+            focus: true
+
+            onTextChanged: {
+                if(searchField.text.length > 2) {
+                    startSearch.restart()
+                }
+            }
 
             EnterKey.onClicked: {
                 if(searchField.text.length > 2) {
-                    airportsModel.clear()
-                    var searchText = searchField.text.replace(/ /g, '%20')
-                    var lang = database.language.toLowerCase()
-                    if (lang !== "en" || lang !== "ru") {
-                        lang = "en"
-                    }
-
-                    var url = "http://nano.aviasales.ru/places_" + lang + "?term=" + searchText
-                    Utils.performRequest("GET", url, getCityInfo)
-                    internal.loadData = true
+                    startSearch.stop()
+                    internal.searchAirport()
                 }
             }
         }
@@ -78,24 +98,25 @@ Dialog {
             anchors.top: searchField.bottom
             anchors.bottom: parent.bottom
 
-            model: airportsModel
+            model: serachAirports.airportModel
+
             delegate: ListItem {
                 height: Theme.itemSizeSmall
                 width: parent.width
 
                 IconTextItem {
-                    iconSource: model.airport_name ?
+                    iconSource: model.data.airport_name ?
                                     "../images/airport_target.svg" :
                                     "../images/target.svg"
                     fontSize: Theme.fontSizeExtraSmall
-                    title: (model.airport_name ?
-                                model.airport_name + ": " + model.name :
-                                qsTr("Location: ") + model.name) + " (" + model.iata + ")"
+                    title: (model.data.airport_name ?
+                                model.data.airport_name + ": " + model.data.name :
+                                qsTr("Location: ") + model.data.name) + " (" + model.data.iata + ")"
                     onClicked: {
-                        d.airportName = model.airport_name?model.airport_name:model.name
-                        d.airportIATA = model.iata
-                        d.cityIata = model.city_iata ? model.city_iata : model.iata
-                        airportsModel.clear()
+                        d.airportName = model.data.airport_name?model.data.airport_name:model.data.name
+                        d.airportIATA = model.data.iata
+                        d.cityIata = model.data.city_iata ? model.data.city_iata : model.data.iata
+                        serachAirports.clearAirportsList()
                         d.accept()
                     }
                 }
@@ -106,7 +127,7 @@ Dialog {
                 }
             }
             ViewPlaceholder {
-                enabled: airportsModel.count == 0 && !internal.loadData && internal.finishSearching
+                enabled: serachAirports.getAirportsCount() == 0 && !internal.loadData && internal.finishSearching
                 text: qsTr("No airports found")
                 hintText: qsTr("Enter airport/city name")
             }

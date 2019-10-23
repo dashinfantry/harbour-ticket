@@ -155,7 +155,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Sort by airline</source>
+        <source>Search is in progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No tickets found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please wait</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please, change the search request</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sort by duration</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -233,6 +249,10 @@
         <source>Settings</source>
         <translation type="unfinished">Ustawienia</translation>
     </message>
+    <message>
+        <source>Open links in browser</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StartPage</name>
@@ -288,6 +308,14 @@
         <source>Search history is empty</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Compensation for flight delay or cancellation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rent a car</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TicketInfoDelegate</name>
@@ -296,20 +324,16 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Stops: </source>
+        <source>&lt;b&gt;Trip duration:&lt;/b&gt; </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Trip duration: </source>
+        <source>&lt;b&gt;Stops:&lt;/b&gt; </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>TicketPage</name>
-    <message>
-        <source>Trip duration: </source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Buy</source>
         <translation type="unfinished"></translation>
@@ -336,6 +360,10 @@
     </message>
     <message>
         <source>&lt;b&gt;Arrival:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Trip duration:&lt;/b&gt; </source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -2,7 +2,7 @@ import QtQuick 2.2
 import QtQuick.XmlListModel 2.0
 import Sailfish.Silica 1.0
 
-import "Utils.js" as Utils
+import "../utils/Utils.js" as Utils
 
 import "../delegates"
 

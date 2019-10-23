@@ -14,7 +14,9 @@ TARGET = harbour-ticket
 
 CONFIG += sailfishapp
 
-SOURCES += src/harbour-ticket.cpp
+SOURCES += src/harbour-ticket.cpp \
+    src/data.cpp \
+    src/networkmanger.cpp
 
 OTHER_FILES += qml/harbour-ticket.qml \
     qml/cover/CoverPage.qml \
@@ -44,3 +46,7 @@ DISTFILES += \
     qml/delegates/*.qml \
     qml/utils/* \
     qml/images/*
+
+HEADERS += \
+    src/data.h \
+    src/networkmanger.h

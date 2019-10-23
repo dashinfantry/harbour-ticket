@@ -208,13 +208,6 @@ Page {
                     pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
                 }
             }
-//            MenuItem {
-//                text: qsTr("Search")
-//                onClicked: {
-//                    app.newSearchAllowed = false
-//                    pageStack.push(Qt.resolvedUrl("../delegates/SearchDialog.qml"), {currentIp: root.currentIp})
-//                }
-//            }
         }
 
         ListView {
@@ -249,7 +242,7 @@ Page {
             anchors { top: searchTypes.bottom; left: parent.left; right: parent.right; bottom: offers.top }
             spacing: Theme.paddingSmall
             clip: true
-            visible: true //!busyIndicator.running
+            visible: favoritesModel.count > 0
             header: SectionHeader {
                 text: qsTr("Search history")
             }
@@ -339,29 +332,34 @@ Page {
             anchors.bottom: offers1.top
             anchors.bottomMargin: Theme.horizontalPageMargin
             width: parent.width
-            title: "Special offers"
-            iconSource: "image://theme/icon-m-gps"
-            enabled: false
+            title: qsTr("Compensation for flight delay or cancellation")
+            iconSource: "image://theme/icon-m-presence"
+            enabled: true
 
             onClicked: {
-                var url = "http://www.jetradar.com/deals.atom/"
-                pageStack.push(Qt.resolvedUrl("AirlinesOffers.qml"), {xmlSource: url})
+//                var url = "http://api.travelpayouts.com/v2/prices/special-offers?token=" + Utils.token
+                var url = "https://c120.travelpayouts.com/click?shmarker=81618&promo_id=3670&source_type=link&type=click"
+                pageStack.push(Qt.resolvedUrl("WebPage.qml"), {pageUrl: url})
+//                pageStack.push(Qt.resolvedUrl("AirlinesOffers.qml"), {xmlSource: url})
             }
         }
 
         IconTextItem {
             id: offers1
 
+
             anchors.bottom: parent.bottom
             anchors.bottomMargin: Theme.horizontalPageMargin
             width: parent.width
-            title: "Special offers1"
-            iconSource: "image://theme/icon-m-gps"
-            enabled: false
-
+            title: qsTr("Rent a car")
+            iconSource: "image://theme/icon-m-car"
+            enabled: true
+//https://c10.travelpayouts.com/click?shmarker=81618&promo_id=2018&source_type=customlink&type=click&custom_url=https%3A%2F%2Fwww.economybookings.com%2F
             onClicked: {
-                var url = "http://api.travelpayouts.com/v2/prices/special-offers?token=" + Utils.token
-                pageStack.push(Qt.resolvedUrl("AirlinesOffers.qml"), {xmlSource: url})
+//                var url = "http://www.jetradar.com/deals.atom/"
+                var url = "https://c10.travelpayouts.com/click?shmarker=81618&promo_id=2018&source_type=customlink&type=click&custom_url=https%3A%2F%2Fwww.economybookings.com%2F"
+                pageStack.push(Qt.resolvedUrl("WebPage.qml"), {pageUrl: url})
+//                pageStack.push(Qt.resolvedUrl("AirlinesOffers.qml"), {xmlSource: url})
             }
         }
 

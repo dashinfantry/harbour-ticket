@@ -13,17 +13,21 @@ ListItem {
     property string date_to: ""
     property string ticket_price: ""
     property string fly_duration: ""
+    property string _currency: ""
     property int transfers_count: 0
+    property int local_departure: 0
+    property int local_arrival: 0
+    property int unified_price: 0
 
     property variant proposal: ({})
     property variant airports: ({})
     property variant airlines: ({})
 
-//    property bool   direct: false
+    //    property bool   direct: false
 
     property variant currencyRatesInfo: ({})
 
-    height: Theme.itemSizeSmall + orig_dest.height + ticketPrice.height
+//    height: Theme.itemSizeSmall + orig_dest.height + ticketPrice.height
     contentHeight:  Theme.itemSizeSmall + orig_dest.height + ticketPrice.height
     width: parent.width
 
@@ -48,8 +52,8 @@ ListItem {
             flyNumbers.push(t)
         }
         internal.flyNumber = flyNumbers.filter(Utils.onlyUnique).join(" - ")
-        internal.departure_date = Utils.fromUnixToShortFormat(segment.flight[0].local_departure_timestamp, database.language)
-        internal.arrival_date = Utils.fromUnixToShortFormat(segment.flight[0].local_arrival_timestamp, database.language)
+//        internal.departure_date = Utils.fromUnixToShortFormat(segment.flight[0].local_departure_timestamp, database.language)
+//        internal.arrival_date = Utils.fromUnixToShortFormat(segment.flight[0].local_arrival_timestamp, database.language)
     }
 
     Label {
@@ -66,7 +70,7 @@ ListItem {
         anchors.left: parent.left
         anchors.leftMargin: Theme.paddingMedium
         anchors.top: orig_dest.bottom
-//        height: Theme.iconSizeLarge
+        //        height: Theme.iconSizeLarge
         width: Theme.iconSizeExtraLarge
         source: airlineIata?"http://pics.avs.io/264/87/"+ airlineIata +".png":""
         //source: iata?"http://ios.aviasales.ru/logos/xxhdpi/"+ iata +".png":""
@@ -81,75 +85,38 @@ ListItem {
         text: airlines[airlineIata].name
     }
 
-//    Text {
-//        anchors.left: logo.right
-//        anchors.leftMargin: Theme.horizontalPageMargin
-//        anchors.bottom: logo.bottom
-//        color: Theme.secondaryColor
-
-//        text: internal.flyNumber
-//    }
-
-//    Column {
-//        id: datesColumn
-//        width: parent.width - ticketPrice.width
-//        anchors.top: logo.bottom
-//        anchors.topMargin: Theme.paddingSmall
-//        spacing: Theme.paddingSmall
-//        DetailItem {
-//            leftMargin: Theme.paddingSmall
-//            label: qsTr("Departure date/time:")
-//            value: internal.departure_date//Utils.fromUnixToLocalDateTime(date_from)
-//        }
-//        DetailItem {
-//            visible: date_to?true:false
-//            leftMargin: Theme.paddingSmall
-//            label: qsTr("Arrival date/time:")
-//            value: internal.arrival_date//Utils.fromUnixToLocalDateTime(date_to)
-//        }
-//        DetailItem {
-//            leftMargin: Theme.paddingSmall
-//            label: qsTr("Trip duration:")
-//            value: Utils.fromMinToHours(fly_duration)
-//        }
-//        DetailItem {
-//            leftMargin: Theme.paddingSmall
-//            label: qsTr("Transfers:")
-//            value: transfers_count > 0?transfers_count:qsTr("Direct")
-//        }
-//    }
-
     Column {
         anchors.top: logo.bottom
         anchors.left: parent.left
         anchors.right: ticketPrice.left
         anchors.margins: Theme.paddingMedium
-    Row {
-        spacing: Theme.horizontalPageMargin
-        Text {
-            font.pixelSize: Theme.fontSizeTiny
-            color: Theme.secondaryColor
-            text: internal.departure_date
+        spacing: Theme.paddingSmall
+        Row {
+            spacing: Theme.horizontalPageMargin
+            Text {
+                font.pixelSize: Theme.fontSizeTiny
+                color: Theme.secondaryColor
+                text: Utils.fromUnixToShortFormat(local_departure, database.language) //internal.departure_date
+            }
+            Text {
+                font.pixelSize: Theme.fontSizeTiny
+                color: Theme.secondaryColor
+                text: Utils.fromUnixToShortFormat(local_arrival, database.language) //internal.arrival_date
+            }
         }
-        Text {
-            font.pixelSize: Theme.fontSizeTiny
-            color: Theme.secondaryColor
-            text: internal.arrival_date
+        Row {
+            spacing: Theme.horizontalPageMargin
+            Text {
+                font.pixelSize: Theme.fontSizeTiny
+                color: Theme.secondaryColor
+                text: qsTr("<b>Trip duration:</b> ") + Utils.fromMinToHours(fly_duration)
+            }
+            Text {
+                font.pixelSize: Theme.fontSizeTiny
+                color: Theme.secondaryColor
+                text: qsTr("<b>Stops:</b> ") + (transfers_count > 0?transfers_count:qsTr("Direct"))
+            }
         }
-    }
-    Row {
-        spacing: Theme.horizontalPageMargin
-        Text {
-            font.pixelSize: Theme.fontSizeTiny
-            color: Theme.secondaryColor
-            text: qsTr("Trip duration: ") + Utils.fromMinToHours(fly_duration)
-        }
-        Text {
-            font.pixelSize: Theme.fontSizeTiny
-            color: Theme.secondaryColor
-            text: qsTr("Stops: ") + (transfers_count > 0?transfers_count:qsTr("Direct"))
-        }
-    }
     }
 
     Label {
@@ -176,7 +143,8 @@ ListItem {
                            "currencyRates": currencyRatesInfo,
                            "_currency": _currency,
                            "airports": airports,
-                           "airlines": airlines
+                           "airlines": airlines,
+                           "unified_price": unified_price
                        })
     }
 }

@@ -44,15 +44,15 @@
     </message>
     <message>
         <source>Adults count</source>
-        <translation type="unfinished"></translation>
+        <translation>Кол-во взрослых</translation>
     </message>
     <message>
         <source>Childrens count</source>
-        <translation type="unfinished"></translation>
+        <translation>Кол-во детей</translation>
     </message>
     <message>
         <source>Trip class:</source>
-        <translation type="unfinished"></translation>
+        <translation>Класс места:</translation>
     </message>
 </context>
 <context>
@@ -66,74 +66,74 @@
     <name>SearchAirportDialog</name>
     <message>
         <source>Search airports:</source>
-        <translation type="unfinished">Поиск аэропортов:</translation>
+        <translation>Поиск аэропортов:</translation>
     </message>
     <message>
         <source>No airports found</source>
-        <translation type="unfinished"></translation>
+        <translation>Аэропорты не найдены</translation>
     </message>
     <message>
         <source>Enter airport/city name</source>
-        <translation type="unfinished"></translation>
+        <translation>Введите название аэропорта/города</translation>
     </message>
     <message>
         <source>Location: </source>
-        <translation type="unfinished"></translation>
+        <translation>Расположение: </translation>
     </message>
 </context>
 <context>
     <name>SearchDialog</name>
     <message>
         <source>Search</source>
-        <translation type="unfinished">Поиск</translation>
+        <translation>Поиск</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">Отмена</translation>
+        <translation>Отмена</translation>
     </message>
     <message>
         <source>Origin:</source>
-        <translation type="unfinished">Откуда:</translation>
+        <translation>Откуда:</translation>
     </message>
     <message>
         <source>Destination:</source>
-        <translation type="unfinished">Куда:</translation>
+        <translation>Куда:</translation>
     </message>
     <message>
         <source>Departure date:</source>
-        <translation type="unfinished">Дата вылета:</translation>
+        <translation>Дата вылета:</translation>
     </message>
     <message>
         <source>Return date:</source>
-        <translation type="unfinished">Дата возвращения:</translation>
+        <translation>Дата возвращения:</translation>
     </message>
     <message>
         <source>Adults count</source>
-        <translation type="unfinished"></translation>
+        <translation>Кол-во взрослых</translation>
     </message>
     <message>
         <source>Without transfer</source>
-        <translation type="unfinished">Без пересадок</translation>
+        <translation>Без пересадок</translation>
     </message>
     <message>
         <source>Seat class:</source>
-        <translation type="unfinished">Место:</translation>
+        <translation>Место:</translation>
     </message>
     <message>
         <source>Econom class</source>
-        <translation type="unfinished">Эконом класс</translation>
+        <translation>Эконом класс</translation>
     </message>
     <message>
         <source>Busines class</source>
-        <translation type="unfinished">Бизнесс класс</translation>
+        <translation>Бизнесс класс</translation>
     </message>
     <message>
         <source>Select</source>
-        <translation type="unfinished">Выбрать</translation>
+        <translation>Выбрать</translation>
     </message>
     <message>
         <source>Childrens count</source>
-        <translation type="unfinished"></translation>
+        <translation>Кол-во детей</translation>
     </message>
 </context>
 <context>
@@ -144,7 +144,7 @@
     </message>
     <message>
         <source>Found: </source>
-        <translation>Кол-во:</translation>
+        <translation>Кол-во: </translation>
     </message>
     <message>
         <source>Sort by price: </source>
@@ -155,8 +155,24 @@
         <translation>по возрастанию</translation>
     </message>
     <message>
-        <source>Sort by airline</source>
-        <translation type="unfinished"></translation>
+        <source>Search is in progress</source>
+        <translation>Идёт поиск</translation>
+    </message>
+    <message>
+        <source>No tickets found</source>
+        <translation>Билетов не найдено</translation>
+    </message>
+    <message>
+        <source>Please wait</source>
+        <translation>Пожалуйста подождите</translation>
+    </message>
+    <message>
+        <source>Please, change the search request</source>
+        <translation>Пожалуйста, измените запрос</translation>
+    </message>
+    <message>
+        <source>Sort by duration</source>
+        <translation>Сортировать по времени</translation>
     </message>
 </context>
 <context>
@@ -231,7 +247,11 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Настройки</translation>
+        <translation>Настройки</translation>
+    </message>
+    <message>
+        <source>Open links in browser</source>
+        <translation>Открывать ссылки в браузере</translation>
     </message>
 </context>
 <context>
@@ -266,27 +286,35 @@
     </message>
     <message>
         <source>One way search</source>
-        <translation type="unfinished"></translation>
+        <translation>Поиск в одну сторону</translation>
     </message>
     <message>
         <source>Round trip search</source>
-        <translation type="unfinished"></translation>
+        <translation>Поиск туда-обратно</translation>
     </message>
     <message>
         <source>Round trip</source>
-        <translation type="unfinished"></translation>
+        <translation>Туда-обратно</translation>
     </message>
     <message>
         <source>Complex search</source>
-        <translation type="unfinished"></translation>
+        <translation>Сложный поиск</translation>
     </message>
     <message>
         <source>Fly with more than two stops</source>
-        <translation type="unfinished"></translation>
+        <translation>Перелёт с более чем двумя остановками</translation>
     </message>
     <message>
         <source>Search history is empty</source>
-        <translation type="unfinished"></translation>
+        <translation>История поисков пуста</translation>
+    </message>
+    <message>
+        <source>Compensation for flight delay or cancellation</source>
+        <translation>Компенсация задержанных или отменённых рейсов</translation>
+    </message>
+    <message>
+        <source>Rent a car</source>
+        <translation>Арендовать автомобиль</translation>
     </message>
 </context>
 <context>
@@ -296,12 +324,12 @@
         <translation>Прямой</translation>
     </message>
     <message>
-        <source>Stops: </source>
-        <translation type="unfinished"></translation>
+        <source>&lt;b&gt;Trip duration:&lt;/b&gt; </source>
+        <translation>&lt;b&gt;Время в пути:&lt;/b&gt; </translation>
     </message>
     <message>
-        <source>Trip duration: </source>
-        <translation type="unfinished">Продолжительность:</translation>
+        <source>&lt;b&gt;Stops:&lt;/b&gt; </source>
+        <translation>&lt;b&gt;Пересадки:&lt;/b&gt; </translation>
     </message>
 </context>
 <context>
@@ -311,43 +339,43 @@
         <translation>Купить</translation>
     </message>
     <message>
-        <source>Trip duration: </source>
-        <translation>Продолжительность:</translation>
-    </message>
-    <message>
         <source>&lt;b&gt;Flight number:&lt;/b&gt; </source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Номер рейса:&lt;/b&gt; </translation>
     </message>
     <message>
         <source>&lt;br&gt;&lt;b&gt;Aircraft:&lt;/b&gt; </source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;&lt;b&gt;Борт:&lt;/b&gt; </translation>
     </message>
     <message>
         <source>&lt;b&gt;Origin:&lt;/b&gt; </source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Откуда:&lt;/b&gt; </translation>
     </message>
     <message>
         <source>&lt;b&gt;Depature:&lt;/b&gt; </source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Отправление:&lt;/b&gt; </translation>
     </message>
     <message>
         <source>&lt;b&gt;Destination:&lt;/b&gt; </source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Куда:&lt;/b&gt; </translation>
     </message>
     <message>
         <source>&lt;b&gt;Arrival:&lt;/b&gt; </source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Прибытие:&lt;/b&gt; </translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Trip duration:&lt;/b&gt; </source>
+        <translation>&lt;b&gt;Продолжительность:&lt;/b&gt; </translation>
     </message>
 </context>
 <context>
     <name>Utils</name>
     <message>
         <source> h </source>
-        <translation type="unfinished">ч </translation>
+        <translation>ч </translation>
     </message>
     <message>
         <source> m</source>
-        <translation type="unfinished"> м</translation>
+        <translation> м</translation>
     </message>
 </context>
 </TS>

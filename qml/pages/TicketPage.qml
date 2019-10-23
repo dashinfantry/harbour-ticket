@@ -7,8 +7,7 @@ import "../utils"
 Page {
     id: ticketPage
     property variant ticket: ({})
-
-
+    property int unified_price: 0
     property variant currencyRates: ({})
 
     property string _currency
@@ -23,8 +22,13 @@ Page {
             var parsed = JSON.parse(data)
             if (parsed.method == "GET") {
                 console.log(parsed.url)
-//                Qt.openUrlExternally(parsed.url)
-                pageStack.push(Qt.resolvedUrl("WebPage.qml"), {pageUrl: parsed.url})
+                if (database.openInBrowser) {
+                    Qt.openUrlExternally(parsed.url)
+                } else {
+                    pageStack.push(Qt.resolvedUrl("WebPage.qml"), {pageUrl: parsed.url})
+                }
+            } else {
+                console.log("Unsupported link")
             }
         }
     }
@@ -58,6 +62,8 @@ Page {
             var term = ticket.terms[terms[a]]
             if (database.convertCurrency) {
                 internal.price = (term.unified_price/currencyRates[database.currency]).toFixed(0) + " " + database.currency.toUpperCase()
+            } else {
+                internal.price = term.price + " " + term.currency.toUpperCase()
             }
 
 //            var convertedPrice = (term.unified_price/currencyRates[term.currency]).toFixed(0)
@@ -104,11 +110,11 @@ Page {
             anchors.bottom: buyButton.top
             width: parent.width
             clip: true
-            spacing: Theme.paddingSmall
+            spacing: Theme.paddingMedium
             model: flights
             delegate: ListItem {
-                height: Theme.itemSizeSmall + logo.height + flightNumber.height + origin.height + destination.height + tripDuration.height
-                contentHeight:  Theme.itemSizeSmall + logo.height + flightNumber.height + origin.height + destination.height + tripDuration.height
+//                height: Theme.itemSizeSmall + logo.height + flightNumber.height + origin.height + destination.height + tripDuration.height
+                contentHeight:  Theme.itemSizeMedium + logo.height + flightNumber.height + origin.height + destination.height + tripDuration.height
                 width: parent.width
 
                 Image {
@@ -136,6 +142,7 @@ Page {
                     anchors.left: parent.left
                     anchors.leftMargin: Theme.paddingMedium
                     anchors.top: logo.bottom
+                    anchors.topMargin: Theme.paddingSmall
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.secondaryColor
                     text: qsTr("<b>Flight number:</b> ") + carrier + flight_number + qsTr("<br><b>Aircraft:</b> ") + aircraft
@@ -147,6 +154,7 @@ Page {
                     anchors.right: parent.left
                     anchors.rightMargin: Theme.paddingMedium
                     anchors.top: flightNumber.bottom
+                    anchors.topMargin: Theme.paddingSmall
                     font.pixelSize: Theme.fontSizeSmall
                     color: Theme.secondaryColor
                     text: qsTr("<b>Origin:</b> ") + departure
@@ -159,6 +167,7 @@ Page {
                     anchors.right: parent.left
                     anchors.rightMargin: Theme.paddingMedium
                     anchors.top: origin.bottom
+                    anchors.topMargin: Theme.paddingSmall
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.secondaryColor
                     text: qsTr("<b>Depature:</b> ") + Utils.fromUnixToShortFormat(departure_time)
@@ -171,6 +180,7 @@ Page {
                     anchors.right: parent.left
                     anchors.rightMargin: Theme.paddingMedium
                     anchors.top: departureDate.bottom
+                    anchors.topMargin: Theme.paddingSmall
                     font.pixelSize: Theme.fontSizeSmall
                     color: Theme.secondaryColor
                     text: qsTr("<b>Destination:</b> ") + arrival
@@ -183,6 +193,7 @@ Page {
                     anchors.right: parent.left
                     anchors.rightMargin: Theme.paddingMedium
                     anchors.top: destination.bottom
+                    anchors.topMargin: Theme.paddingSmall
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.secondaryColor
                     text: qsTr("<b>Arrival:</b> ") + Utils.fromUnixToShortFormat(arrival_time)
@@ -194,9 +205,10 @@ Page {
                     anchors.right: parent.left
                     anchors.rightMargin: Theme.paddingMedium
                     anchors.top: arrivalDate.bottom
+                    anchors.topMargin: Theme.paddingSmall
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.secondaryColor
-                    text: qsTr("Trip duration: ") + Utils.fromMinToHours(duration)
+                    text: qsTr("<b>Trip duration:</b> ") + Utils.fromMinToHours(duration)
                 }
             }
         }

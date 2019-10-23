@@ -10,7 +10,8 @@ Item {
     property string currency: "eur"
     property string language: "en"
     property bool showHints: true
-    property bool convertCurrency: false
+    property bool convertCurrency: false    
+    property bool openInBrowser: false
 
     Component.onCompleted: {
         initDatabase()
@@ -44,6 +45,16 @@ Item {
             }
         } else {
             database.storeData("convert", "false", "false")
+        }
+        var browser = getName("browser")
+        if (browser) {
+            if (browser === "false") {
+                openInBrowser = false
+            } else {
+                openInBrowser = true
+            }
+        } else {
+            database.storeData("browser", "false", "false")
         }
     }
 

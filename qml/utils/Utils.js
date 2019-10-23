@@ -2,8 +2,6 @@ var token = "acdea79c1af35e38e0e4855acd0b467d"
 var marker = "81618"
 var host = "harbour-ticket"
 
-//var getMyIpUrl = "http://ifconfig.me/ip" //"https://api.ipify.org?format=json"
-// var getMyIpUrl = "http://ip-api.com/json"
 var getMyIpUrl = "http://myip.dnsomatic.com/"
 
 var _tmp = {}
