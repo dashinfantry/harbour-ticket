@@ -222,6 +222,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Clear search history</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Convert price to</source>
         <translation type="unfinished"></translation>
     </message>
@@ -258,6 +262,10 @@
     <name>StartPage</name>
     <message>
         <source>Avia tickets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Plan your trip</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -306,6 +314,10 @@
     </message>
     <message>
         <source>Search history is empty</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Additional services</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
