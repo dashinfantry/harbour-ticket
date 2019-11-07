@@ -132,7 +132,7 @@
         <translation>Välj</translation>
     </message>
     <message>
-        <source>Childrens count</source>
+        <source>Children count</source>
         <translation>Antal barn</translation>
     </message>
 </context>
@@ -143,16 +143,16 @@
         <translation>Resultat</translation>
     </message>
     <message>
-        <source>low to high</source>
-        <translation>Lågt till högt</translation>
-    </message>
-    <message>
         <source>Found: </source>
         <translation>Hittat: </translation>
     </message>
     <message>
         <source>Sort by price: </source>
         <translation>Sortera efter pris: </translation>
+    </message>
+    <message>
+        <source>low to high</source>
+        <translation>Lågt till högt</translation>
     </message>
     <message>
         <source>Search is in progress</source>
@@ -168,7 +168,7 @@
     </message>
     <message>
         <source>Please, change the search request</source>
-        <translation>Ändra söksträngen. tack!</translation>
+        <translation>Ändra söksträngen, tack!</translation>
     </message>
     <message>
         <source>Sort by duration</source>
@@ -178,28 +178,8 @@
 <context>
     <name>SettingsPage</name>
     <message>
-        <source>Application settings</source>
-        <translation>Programinställningar</translation>
-    </message>
-    <message>
-        <source>Search settings</source>
-        <translation>Sökinställningar</translation>
-    </message>
-    <message>
         <source>Language</source>
         <translation>Språk</translation>
-    </message>
-    <message>
-        <source>Convert price to</source>
-        <translation>Konvertera pris till</translation>
-    </message>
-    <message>
-        <source>Show hints</source>
-        <translation>Visa tips</translation>
-    </message>
-    <message>
-        <source>Currency</source>
-        <translation>Valuta</translation>
     </message>
     <message>
         <source>EN</source>
@@ -214,6 +194,10 @@
         <translation>DE</translation>
     </message>
     <message>
+        <source>Currency</source>
+        <translation>Valuta</translation>
+    </message>
+    <message>
         <source>USD</source>
         <translation>USD</translation>
     </message>
@@ -224,6 +208,26 @@
     <message>
         <source>RUB</source>
         <translation>RUB</translation>
+    </message>
+    <message>
+        <source>Search settings</source>
+        <translation>Sökinställningar</translation>
+    </message>
+    <message>
+        <source>Application settings</source>
+        <translation>Programinställningar</translation>
+    </message>
+    <message>
+        <source>Show hints</source>
+        <translation>Visa tips</translation>
+    </message>
+    <message>
+        <source>Clear search history</source>
+        <translation>Rensa sökhistoriken</translation>
+    </message>
+    <message>
+        <source>Convert price to</source>
+        <translation>Konvertera pris till</translation>
     </message>
     <message>
         <source>FR</source>
@@ -243,7 +247,7 @@
     </message>
     <message>
         <source>Delete history</source>
-        <translation>Ta bort historik</translation>
+        <translation>Ta bort historiken</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -257,12 +261,28 @@
 <context>
     <name>StartPage</name>
     <message>
-        <source>About</source>
-        <translation>Om</translation>
+        <source>Avia tickets</source>
+        <translation>Avia tickets</translation>
+    </message>
+    <message>
+        <source>Plan your trip</source>
+        <translation>Planera din resa</translation>
     </message>
     <message>
         <source>One way ticket</source>
         <translation>Enkel resa</translation>
+    </message>
+    <message>
+        <source>About</source>
+        <translation>Om</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Inställningar</translation>
+    </message>
+    <message>
+        <source>Pull down and select Search</source>
+        <translation>Dra neråt och välj Sök</translation>
     </message>
     <message>
         <source>Delete</source>
@@ -271,18 +291,6 @@
     <message>
         <source>Search history</source>
         <translation>Sökhistorik</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>Inställningar</translation>
-    </message>
-    <message>
-        <source>Avia tickets</source>
-        <translation>Avia tickets</translation>
-    </message>
-    <message>
-        <source>Pull down and select Search</source>
-        <translation>Dra neråt och välj Sök</translation>
     </message>
     <message>
         <source>One way search</source>
@@ -307,6 +315,10 @@
     <message>
         <source>Search history is empty</source>
         <translation>Sökhistoriken är tom</translation>
+    </message>
+    <message>
+        <source>Additional services</source>
+        <translation>Tilläggstjänster</translation>
     </message>
     <message>
         <source>Compensation for flight delay or cancellation</source>
