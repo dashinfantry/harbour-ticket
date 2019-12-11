@@ -298,11 +298,11 @@
     </message>
     <message>
         <source>Round trip search</source>
-        <translation>Sök rundresa</translation>
+        <translation>Sök tur &amp; retur</translation>
     </message>
     <message>
         <source>Round trip</source>
-        <translation>Rundresa</translation>
+        <translation>Tur &amp; retur</translation>
     </message>
     <message>
         <source>Complex search</source>
