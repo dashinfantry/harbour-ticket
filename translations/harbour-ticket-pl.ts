@@ -5,166 +5,166 @@
     <name>AirlinesOffers</name>
     <message>
         <source>Special offers</source>
-        <translation type="unfinished"></translation>
+        <translation>Oferty specjalne</translation>
     </message>
 </context>
 <context>
     <name>ComplexSearchDialog</name>
     <message>
         <source>Select</source>
-        <translation type="unfinished">Wybierz</translation>
+        <translation>Wybierz</translation>
     </message>
     <message>
         <source>Econom class</source>
-        <translation type="unfinished"></translation>
+        <translation>Klasa ekonomiczna</translation>
     </message>
     <message>
         <source>Busines class</source>
-        <translation type="unfinished"></translation>
+        <translation>Klasa biznesowa</translation>
     </message>
     <message>
         <source>Origin:</source>
-        <translation type="unfinished">Miejsce wylotu:</translation>
+        <translation>Miejsce wylotu:</translation>
     </message>
     <message>
         <source>Destination:</source>
-        <translation type="unfinished">Cel:</translation>
+        <translation>Cel:</translation>
     </message>
     <message>
         <source>Departure date:</source>
-        <translation type="unfinished">Avgångsdatum:</translation>
+        <translation>Data wylotu:</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation type="unfinished">Wyszukaj</translation>
+        <translation>Szukaj</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Anuluj</translation>
     </message>
     <message>
         <source>Adults count</source>
-        <translation type="unfinished"></translation>
+        <translation>Ilość dorosłych</translation>
     </message>
     <message>
         <source>Trip class:</source>
-        <translation type="unfinished"></translation>
+        <translation>Klasa podróży</translation>
     </message>
     <message>
         <source>Children count</source>
-        <translation type="unfinished"></translation>
+        <translation>Ilość dzieci</translation>
     </message>
 </context>
 <context>
     <name>FavoritesDelegate</name>
     <message>
         <source>Departure: </source>
-        <translation type="unfinished"></translation>
+        <translation>Wylot: </translation>
     </message>
 </context>
 <context>
     <name>SearchAirportDialog</name>
     <message>
         <source>Search airports:</source>
-        <translation type="unfinished">Wyszukaj lotniska:</translation>
+        <translation>Wyszukaj lotniska:</translation>
     </message>
     <message>
         <source>No airports found</source>
-        <translation type="unfinished"></translation>
+        <translation>Brak lotnisk</translation>
     </message>
     <message>
         <source>Enter airport/city name</source>
-        <translation type="unfinished"></translation>
+        <translation>Wprowadź lotnisko/miasto</translation>
     </message>
     <message>
         <source>Location: </source>
-        <translation type="unfinished"></translation>
+        <translation>Miejsce: </translation>
     </message>
 </context>
 <context>
     <name>SearchDialog</name>
     <message>
         <source>Search</source>
-        <translation type="unfinished">Wyszukaj</translation>
+        <translation>Szukaj</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Anuluj</translation>
     </message>
     <message>
         <source>Origin:</source>
-        <translation type="unfinished">Miejsce wylotu:</translation>
+        <translation>Miejsce wylotu:</translation>
     </message>
     <message>
         <source>Destination:</source>
-        <translation type="unfinished">Cel:</translation>
+        <translation>Cel:</translation>
     </message>
     <message>
         <source>Departure date:</source>
-        <translation type="unfinished">Avgångsdatum:</translation>
+        <translation>Data wylotu:</translation>
     </message>
     <message>
         <source>Return date:</source>
-        <translation type="unfinished">Data powrotu:</translation>
+        <translation>Data powrotu:</translation>
     </message>
     <message>
         <source>Adults count</source>
-        <translation type="unfinished"></translation>
+        <translation>Ilość dorosłych</translation>
     </message>
     <message>
         <source>Without transfer</source>
-        <translation type="unfinished">Bez przesiadek</translation>
+        <translation>Bez przesiadek</translation>
     </message>
     <message>
         <source>Seat class:</source>
-        <translation type="unfinished"></translation>
+        <translation>Klasa miejsca:</translation>
     </message>
     <message>
         <source>Econom class</source>
-        <translation type="unfinished"></translation>
+        <translation>Klasa ekonomiczna</translation>
     </message>
     <message>
         <source>Busines class</source>
-        <translation type="unfinished"></translation>
+        <translation>Klasa biznesowa</translation>
     </message>
     <message>
         <source>Select</source>
-        <translation type="unfinished">Wybierz</translation>
+        <translation>Wybierz</translation>
     </message>
     <message>
         <source>Childrens count</source>
-        <translation type="unfinished"></translation>
+        <translation>Ilość dzieci</translation>
     </message>
 </context>
 <context>
     <name>SearchResultsPage</name>
     <message>
         <source>Sort by price: </source>
-        <translation type="unfinished"></translation>
+        <translation>Sortuj według ceny: </translation>
     </message>
     <message>
         <source>low to high</source>
-        <translation type="unfinished"></translation>
+        <translation>od najniższej do najwyższej</translation>
     </message>
     <message>
         <source>Results</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyniki</translation>
     </message>
     <message>
         <source>Found: </source>
-        <translation type="unfinished"></translation>
+        <translation>Znaleziono: </translation>
     </message>
     <message>
         <source>Search is in progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyszukiwanie w trakcie</translation>
     </message>
     <message>
         <source>No tickets found</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie znaleziono biletów</translation>
     </message>
     <message>
         <source>Please wait</source>
-        <translation type="unfinished"></translation>
+        <translation>Proszę czekać</translation>
     </message>
     <message>
         <source>Please, change the search request</source>
@@ -172,7 +172,7 @@
     </message>
     <message>
         <source>Sort by duration</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortuj po czasie podróży</translation>
     </message>
 </context>
 <context>
@@ -187,95 +187,95 @@
     </message>
     <message>
         <source>Search settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustawienia szukania</translation>
     </message>
     <message>
         <source>EN</source>
-        <translation type="unfinished"></translation>
+        <translation>EN</translation>
     </message>
     <message>
         <source>RU</source>
-        <translation type="unfinished"></translation>
+        <translation>RU</translation>
     </message>
     <message>
         <source>DE</source>
-        <translation type="unfinished"></translation>
+        <translation>DE</translation>
     </message>
     <message>
         <source>Convert price to</source>
-        <translation type="unfinished"></translation>
+        <translation>Przelicz cenę na</translation>
     </message>
     <message>
         <source>USD</source>
-        <translation type="unfinished"></translation>
+        <translation>USD</translation>
     </message>
     <message>
         <source>EUR</source>
-        <translation type="unfinished"></translation>
+        <translation>EUR</translation>
     </message>
     <message>
         <source>RUB</source>
-        <translation type="unfinished"></translation>
+        <translation>RUB</translation>
     </message>
     <message>
         <source>Application settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustawienia aplikacji</translation>
     </message>
     <message>
         <source>Show hints</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż podpowiedzi</translation>
     </message>
     <message>
         <source>FR</source>
-        <translation type="unfinished"></translation>
+        <translation>FR</translation>
     </message>
     <message>
         <source>IT</source>
-        <translation type="unfinished"></translation>
+        <translation>IT</translation>
     </message>
     <message>
         <source>PL</source>
-        <translation type="unfinished"></translation>
+        <translation>PL</translation>
     </message>
     <message>
         <source>TH</source>
-        <translation type="unfinished"></translation>
+        <translation>TH</translation>
     </message>
     <message>
         <source>Delete history</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuń historię</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Ustawienia</translation>
+        <translation>Ustawienia</translation>
     </message>
     <message>
         <source>Open links in browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Otwórz odnośniki w przeglądarce</translation>
     </message>
     <message>
         <source>SEK</source>
-        <translation type="unfinished"></translation>
+        <translation>SEK</translation>
     </message>
     <message>
         <source>CNY</source>
-        <translation type="unfinished"></translation>
+        <translation>CNY</translation>
     </message>
     <message>
         <source>GBP</source>
-        <translation type="unfinished"></translation>
+        <translation>GBP</translation>
     </message>
     <message>
         <source>CZK</source>
-        <translation type="unfinished"></translation>
+        <translation>CZK</translation>
     </message>
     <message>
         <source>PLN</source>
-        <translation type="unfinished"></translation>
+        <translation>PLN</translation>
     </message>
     <message>
         <source>JPY</source>
-        <translation type="unfinished"></translation>
+        <translation>JPY</translation>
     </message>
 </context>
 <context>
@@ -298,23 +298,23 @@
     </message>
     <message>
         <source>Search history</source>
-        <translation type="unfinished"></translation>
+        <translation>Historia wyszukiwania</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuń</translation>
     </message>
     <message>
         <source>Pull down and select Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Przeciągnij w dół i wybierz Szukaj</translation>
     </message>
     <message>
         <source>One way search</source>
-        <translation type="unfinished"></translation>
+        <translation>W jedną stronę</translation>
     </message>
     <message>
         <source>Round trip search</source>
-        <translation type="unfinished"></translation>
+        <translation>W dwie strony</translation>
     </message>
     <message>
         <source>Round trip</source>
