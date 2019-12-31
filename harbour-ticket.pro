@@ -42,6 +42,7 @@ TRANSLATIONS += translations/harbour-ticket-pl.ts
 TRANSLATIONS += translations/harbour-ticket-el.ts
 
 DISTFILES += \
+    qml/delegates/TicketDelegate.qml \
     qml/pages/*.qml \
     qml/delegates/*.qml \
     qml/utils/* \

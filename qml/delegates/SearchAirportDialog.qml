@@ -54,7 +54,7 @@ Dialog {
 
     Timer {
         id: startSearch
-        interval: 3000
+        interval: 1500
         repeat: false
 
         onTriggered: {

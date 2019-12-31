@@ -21,13 +21,14 @@ Page {
 
     BusyIndicator {
         id: busyIndicator
-//        running: true
+
         size: BusyIndicatorSize.Large
         anchors.centerIn: parent
     }
 
     Timer {
         id: requestTickets
+
         property int count: 0
         interval: 5000
         repeat: true
@@ -50,6 +51,8 @@ Page {
         hint.running = database.showHints
 
         Utils.performRequest("GET", Utils.getMyIpUrl, getCurrentIp)
+
+        getFavorites()
     }
 
     ListModel {
@@ -108,13 +111,13 @@ Page {
         }
     }
 
-    function saveFavorites(data) {
-        for (var i in data) {
-            //
-            database.storeFavorite(data[i].key, data[i].value)
-        }
-        getFavorites()
-    }
+//    function saveFavorites(data) {
+//        for (var i in data) {
+//            //
+//            database.storeFavorite(data[i].key, data[i].value)
+//        }
+//        getFavorites()
+//    }
 
     function getCurrentIp(data) {
         if(data !== "error") {
@@ -122,12 +125,12 @@ Page {
             currentIp = data
 
             console.log("My IP", currentIp)
-
-            getFavorites()
+            return
 
 //            var url = "http://nano.aviasales.ru/places/top_" + language + ".json"
 //            Utils.performRequest("GET", url, getAirportsInfo)
         }
+        currentIp = "127.0.0.1"
     }
 
     function getAirportsInfo(data) {
@@ -270,8 +273,8 @@ Page {
                                        direct: directFlight,
                                        origin: fav_origin,
                                        destination: fav_destination,
-                                       originText: originName + " (" + fav_origin + ")",
-                                       destinationText: destinationName + " (" + fav_destination + ")",
+                                       originText: originName, // + " (" + fav_origin + ")",
+                                       destinationText: destinationName, // + " (" + fav_destination + ")",
                                        originAirport: originName + " (" + fav_origin + ")",
                                        destinationAirport: destinationName + " (" + fav_destination + ")",
                                        passengers: adults,
@@ -311,20 +314,6 @@ Page {
             }
 
         }
-
-//        ListItem {
-//            id: offers
-
-//            anchors.bottom: parent.bottom
-//            anchors.bottomMargin: Theme.horizontalPageMargin
-//            anchors.horizontalCenter: parent.horizontalCenter
-////            text: qsTr("Special offers")
-
-//            onClicked: {
-//                var url = "http://api.travelpayouts.com/v2/prices/special-offers?token=" + Utils.token
-//                pageStack.push(Qt.resolvedUrl("AirlinesOffers.qml"), {xmlSource: url})
-//            }
-//        }
 
         IconTextItem {
             id: offers

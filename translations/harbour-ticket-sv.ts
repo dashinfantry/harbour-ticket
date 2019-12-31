@@ -47,12 +47,12 @@
         <translation>Antal vuxna</translation>
     </message>
     <message>
-        <source>Childrens count</source>
-        <translation>Antal barn</translation>
-    </message>
-    <message>
         <source>Trip class:</source>
         <translation>Resklass:</translation>
+    </message>
+    <message>
+        <source>Children count</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -132,8 +132,8 @@
         <translation>Välj</translation>
     </message>
     <message>
-        <source>Children count</source>
-        <translation>Antal barn</translation>
+        <source>Childrens count</source>
+        <translation type="unfinished">Antal barn</translation>
     </message>
 </context>
 <context>
@@ -222,10 +222,6 @@
         <translation>Visa tips</translation>
     </message>
     <message>
-        <source>Clear search history</source>
-        <translation>Rensa sökhistoriken</translation>
-    </message>
-    <message>
         <source>Convert price to</source>
         <translation>Konvertera pris till</translation>
     </message>
@@ -257,16 +253,36 @@
         <source>Open links in browser</source>
         <translation>Öppna länkar i webbläsaren</translation>
     </message>
+    <message>
+        <source>SEK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CNY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GBP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CZK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PLN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>JPY</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StartPage</name>
     <message>
         <source>Avia tickets</source>
         <translation>Avia tickets</translation>
-    </message>
-    <message>
-        <source>Plan your trip</source>
-        <translation>Planera din resa</translation>
     </message>
     <message>
         <source>One way ticket</source>
@@ -317,16 +333,39 @@
         <translation>Sökhistoriken är tom</translation>
     </message>
     <message>
-        <source>Additional services</source>
-        <translation>Tilläggstjänster</translation>
-    </message>
-    <message>
         <source>Compensation for flight delay or cancellation</source>
         <translation>Kompensation för flygförsening eller avbokning</translation>
     </message>
     <message>
         <source>Rent a car</source>
         <translation>Hyrbil</translation>
+    </message>
+</context>
+<context>
+    <name>TicketDelegate</name>
+    <message>
+        <source>&lt;b&gt;Flight number:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;br&gt;&lt;b&gt;Aircraft:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Trip duration:&lt;/b&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Time to wait:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Baggage: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Handbags: </source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -350,34 +389,6 @@
         <source>Buy</source>
         <translation>Köp</translation>
     </message>
-    <message>
-        <source>&lt;b&gt;Flight number:&lt;/b&gt; </source>
-        <translation>&lt;b&gt;Flight nummer:&lt;/b&gt; </translation>
-    </message>
-    <message>
-        <source>&lt;br&gt;&lt;b&gt;Aircraft:&lt;/b&gt; </source>
-        <translation>&lt;br&gt;&lt;b&gt;Flygplan:&lt;/b&gt; </translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Origin:&lt;/b&gt; </source>
-        <translation>&lt;b&gt;Avgångsplats:&lt;/b&gt; </translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Depature:&lt;/b&gt; </source>
-        <translation>&lt;b&gt;Avgång:&lt;/b&gt; </translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Destination:&lt;/b&gt; </source>
-        <translation>&lt;b&gt;Destination:&lt;/b&gt; </translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Arrival:&lt;/b&gt; </source>
-        <translation>&lt;b&gt;Ankomst:&lt;/b&gt; </translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Trip duration:&lt;/b&gt; </source>
-        <translation>&lt;b&gt;Restid:&lt;/b&gt; </translation>
-    </message>
 </context>
 <context>
     <name>Utils</name>
@@ -388,6 +399,35 @@
     <message>
         <source> m</source>
         <translation> m</translation>
+    </message>
+    <message>
+        <source>luggage is not included in price</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No information about luggage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>no luggage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> kg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> luggage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>luggage of </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> luggage(s)
+ of </source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

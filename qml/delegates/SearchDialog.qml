@@ -302,7 +302,7 @@ Dialog {
             postParms.segments.push({"origin": destination, "destination": origin, "date": Utils.getFullDate(returnSelectedDate)})
         }
 
-        console.log(JSON.stringify(postParms))
+//        console.log(JSON.stringify(postParms))
         var s = Utils.createMD5(postParms)
         postParms.signature = s
 

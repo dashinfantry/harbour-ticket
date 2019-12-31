@@ -47,11 +47,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Childrens count</source>
+        <source>Trip class:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Trip class:</source>
+        <source>Children count</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -222,10 +222,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Clear search history</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Convert price to</source>
         <translation type="unfinished"></translation>
     </message>
@@ -257,15 +253,35 @@
         <source>Open links in browser</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>SEK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CNY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GBP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CZK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PLN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>JPY</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StartPage</name>
     <message>
         <source>Avia tickets</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Plan your trip</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -317,15 +333,38 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Additional services</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Compensation for flight delay or cancellation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Rent a car</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TicketDelegate</name>
+    <message>
+        <source>&lt;b&gt;Flight number:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;br&gt;&lt;b&gt;Aircraft:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Trip duration:&lt;/b&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Time to wait:&lt;/b&gt; </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Baggage: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Handbags: </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -350,34 +389,6 @@
         <source>Buy</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>&lt;b&gt;Flight number:&lt;/b&gt; </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;br&gt;&lt;b&gt;Aircraft:&lt;/b&gt; </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Origin:&lt;/b&gt; </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Depature:&lt;/b&gt; </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Destination:&lt;/b&gt; </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Arrival:&lt;/b&gt; </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Trip duration:&lt;/b&gt; </source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>Utils</name>
@@ -387,6 +398,35 @@
     </message>
     <message>
         <source> m</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>luggage is not included in price</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No information about luggage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>no luggage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> kg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> luggage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>luggage of </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> luggage(s)
+ of </source>
         <translation type="unfinished"></translation>
     </message>
 </context>

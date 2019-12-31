@@ -169,7 +169,7 @@ void Data::parseTicketInfo(const QJsonDocument &result)
                                 for (auto key : airportsKeys)
                                 {
                                     QJsonObject _airport = airportsInfo.value(key).toObject();
-                                    qDebug().noquote() << _airport.value("city_code").toString() << arrivalAirport << key;
+//                                    qDebug().noquote() << _airport.value("city_code").toString() << arrivalAirport << key;
                                     if (_airport.value("city_code").toString() ==  arrivalAirport)
                                     {
                                         arrivalAirport = key;
@@ -182,7 +182,7 @@ void Data::parseTicketInfo(const QJsonDocument &result)
                                 QString departure_date(first.value("departure_date").toString());
                                 QJsonObject gatesInfo (object.value("gates_info").toObject());
 
-                                                                    qDebug() << "gatesInfo" << gatesInfo.keys() << '\n';
+//                                qDebug() << "gatesInfo" << gatesInfo.keys() << '\n';
                                 QString geitId = gatesInfo.keys().at(0);
 
                                 proposalObject.remove("xterms");
@@ -210,7 +210,7 @@ void Data::parseTicketInfo(const QJsonDocument &result)
                                         {
                                             arrival_date = flightPoint.value("arrival_date").toString();
                                             local_arrival_timestamp = flightPoint.value("local_arrival_timestamp").toInt();
-                                            qDebug() << "local_arrival_timestamp" << local_arrival_timestamp;
+//                                            qDebug() << "local_arrival_timestamp" << local_arrival_timestamp;
                                         }
                                         airports.append(point);
                                     }
@@ -257,11 +257,13 @@ void Data::parseTicketInfo(const QJsonDocument &result)
 
 AirportInfo::AirportInfo(const int error): m_error(error)
 {
+    emit dataChanged();
 }
 
 AirportInfo::AirportInfo(const int error, const QJsonObject value)
     : m_error(error), m_obj(value)
 {
+    emit dataChanged();
 }
 
 void AirportInfo::setVal(const QJsonObject &value)
@@ -278,7 +280,7 @@ void AirportInfo::setError(int error)
 TicketInfo::TicketInfo(const QJsonObject value):
     m_obj(value)
 {
-
+    emit dataChanged();
 }
 
 void TicketInfo::setVal(const QJsonObject &value)

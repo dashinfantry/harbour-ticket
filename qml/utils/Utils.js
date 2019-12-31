@@ -75,6 +75,18 @@ function fromUnixToShortFormat(unixFormat, locale) {
     return dateStr + ", " + timeStr
 }
 
+function fromUnixToTimeDateFormat(unixFormat, locale) {
+    var date  = new Date(unixFormat * 1000)
+    var dateStr = date.toLocaleDateString(locale)
+    var minutes = date.getMinutes()
+    if (minutes < 10) {
+        minutes = "0" + minutes
+    }
+
+    var timeStr = date.getHours() + ":" + minutes
+    return timeStr + "\n" + dateStr
+}
+
 function getTime(date) {
     var result = date.getHours() + ":" + date.getMinutes() + " " + date.getTimezoneOffset()
     return result
@@ -145,4 +157,28 @@ function createMD5(data) {
 
 function onlyUnique(value, index, self) {
     return self.indexOf(value) === index
+}
+
+function bagageToString(value) {
+    switch(typeof(value)) {
+    case "boolean":
+        return qsTr("luggage is not included in price")
+    case "string":
+        if("" === value) {
+            return qsTr("No information about luggage")
+        } else if("0PC" === value) {
+            return qsTr("no luggage")
+        } else if(value.indexOf("PC") !== -1) {
+            var arr = value.split("PC")
+            if(arr[1]) {
+                return arr[0] + qsTr(" luggage(s)\n of ") + arr[1] + qsTr(" kg")
+            }
+            return arr[0] + qsTr(" luggage")
+        }
+        break
+    case "number":
+        return qsTr("luggage of ") + value + qsTr(" kg")
+    default:
+        return ""
+    }
 }

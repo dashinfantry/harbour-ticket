@@ -3,6 +3,7 @@ import Sailfish.Silica 1.0
 
 import "../utils/Utils.js" as Utils
 import "../utils"
+import "../delegates"
 
 Page {
     id: ticketPage
@@ -18,10 +19,10 @@ Page {
 
     function buyTicket(data) {
         if (data !== "error") {
-            console.log(data)
+//            console.log(data)
             var parsed = JSON.parse(data)
             if (parsed.method == "GET") {
-                console.log(parsed.url)
+//                console.log(parsed.url)
                 if (database.openInBrowser) {
                     Qt.openUrlExternally(parsed.url)
                 } else {
@@ -39,6 +40,8 @@ Page {
         property string price
         property string language: "en"
         property string url
+        property variant flights_baggage: ([])
+        property variant flights_handbags: ([])
     }
 
     DataBase {
@@ -57,9 +60,12 @@ Page {
     }
 
     Component.onCompleted: {
+//        console.log(JSON.stringify(ticket))
         var terms = Object.keys(ticket.terms)
         for (var a in terms) {
             var term = ticket.terms[terms[a]]
+            internal.flights_baggage = term.flights_baggage[0]
+            internal.flights_handbags = term.flights_handbags[0]
             if (database.convertCurrency) {
                 internal.price = (term.unified_price/currencyRates[database.currency]).toFixed(0) + " " + database.currency.toUpperCase()
             } else {
@@ -85,7 +91,10 @@ Page {
                                    "flight_number": flight.number,
                                    "carrier": flight.operating_carrier,
                                    "duration": flight.duration,
-                                   "aircraft": flight.aircraft?flight.aircraft:flight.equipment
+                                   "aircraft": flight.aircraft?flight.aircraft:flight.equipment,
+                                   "delay": flight.delay,
+                                   "flights_handbags": internal.flights_handbags[j],
+                                   "flights_baggage": internal.flights_baggage[j]
                                })
             }
         }
@@ -112,104 +121,7 @@ Page {
             clip: true
             spacing: Theme.paddingMedium
             model: flights
-            delegate: ListItem {
-//                height: Theme.itemSizeSmall + logo.height + flightNumber.height + origin.height + destination.height + tripDuration.height
-                contentHeight:  Theme.itemSizeMedium + logo.height + flightNumber.height + origin.height + destination.height + tripDuration.height
-                width: parent.width
-
-                Image {
-                    id: logo
-                    anchors.left: parent.left
-                    anchors.leftMargin: Theme.paddingMedium
-                    anchors.top: parent.top
-//                    width: Theme.iconSizeExtraLarge
-                    source: carrier?"http://pics.avs.io/264/87/"+ carrier +".png":""
-                    //source: iata?"http://ios.aviasales.ru/logos/xxhdpi/"+ iata +".png":""
-                    fillMode: Image.PreserveAspectFit
-                }
-                Text {
-                    anchors.left: logo.right
-                    anchors.leftMargin: Theme.horizontalPageMargin
-                    anchors.verticalCenter: logo.verticalCenter
-                    color: Theme.secondaryColor
-                    font.bold: true
-
-                    text: airlines[carrier].name
-
-                }
-                Text {
-                    id: flightNumber
-                    anchors.left: parent.left
-                    anchors.leftMargin: Theme.paddingMedium
-                    anchors.top: logo.bottom
-                    anchors.topMargin: Theme.paddingSmall
-                    font.pixelSize: Theme.fontSizeExtraSmall
-                    color: Theme.secondaryColor
-                    text: qsTr("<b>Flight number:</b> ") + carrier + flight_number + qsTr("<br><b>Aircraft:</b> ") + aircraft
-                }
-                Text {
-                    id: origin
-                    anchors.left: parent.left
-                    anchors.leftMargin: Theme.paddingMedium
-                    anchors.right: parent.left
-                    anchors.rightMargin: Theme.paddingMedium
-                    anchors.top: flightNumber.bottom
-                    anchors.topMargin: Theme.paddingSmall
-                    font.pixelSize: Theme.fontSizeSmall
-                    color: Theme.secondaryColor
-                    text: qsTr("<b>Origin:</b> ") + departure
-                    wrapMode: Text.WordWrap
-                }
-                Text {
-                    id: departureDate
-                    anchors.left: parent.left
-                    anchors.leftMargin: Theme.paddingMedium
-                    anchors.right: parent.left
-                    anchors.rightMargin: Theme.paddingMedium
-                    anchors.top: origin.bottom
-                    anchors.topMargin: Theme.paddingSmall
-                    font.pixelSize: Theme.fontSizeExtraSmall
-                    color: Theme.secondaryColor
-                    text: qsTr("<b>Depature:</b> ") + Utils.fromUnixToShortFormat(departure_time)
-                    wrapMode: "WordWrap"
-                }
-                Text {
-                    id: destination
-                    anchors.left: parent.left
-                    anchors.leftMargin: Theme.paddingMedium
-                    anchors.right: parent.left
-                    anchors.rightMargin: Theme.paddingMedium
-                    anchors.top: departureDate.bottom
-                    anchors.topMargin: Theme.paddingSmall
-                    font.pixelSize: Theme.fontSizeSmall
-                    color: Theme.secondaryColor
-                    text: qsTr("<b>Destination:</b> ") + arrival
-                    wrapMode: Text.WordWrap
-                }
-                Text {
-                    id: arrivalDate
-                    anchors.left: parent.left
-                    anchors.leftMargin: Theme.paddingMedium
-                    anchors.right: parent.left
-                    anchors.rightMargin: Theme.paddingMedium
-                    anchors.top: destination.bottom
-                    anchors.topMargin: Theme.paddingSmall
-                    font.pixelSize: Theme.fontSizeExtraSmall
-                    color: Theme.secondaryColor
-                    text: qsTr("<b>Arrival:</b> ") + Utils.fromUnixToShortFormat(arrival_time)
-                }
-                Text {
-                    id: tripDuration
-                    anchors.left: parent.left
-                    anchors.leftMargin: Theme.paddingMedium
-                    anchors.right: parent.left
-                    anchors.rightMargin: Theme.paddingMedium
-                    anchors.top: arrivalDate.bottom
-                    anchors.topMargin: Theme.paddingSmall
-                    font.pixelSize: Theme.fontSizeExtraSmall
-                    color: Theme.secondaryColor
-                    text: qsTr("<b>Trip duration:</b> ") + Utils.fromMinToHours(duration)
-                }
+            delegate: TicketDelegate{
             }
         }
 

@@ -78,6 +78,12 @@ Page {
                 MenuItem { text: qsTr("USD") }
                 MenuItem { text: qsTr("EUR") }
                 MenuItem { text: qsTr("RUB") }
+                MenuItem { text: qsTr("SEK") }
+                MenuItem { text: qsTr("CNY") }
+                MenuItem { text: qsTr("GBP") }
+                MenuItem { text: qsTr("CZK") }
+                MenuItem { text: qsTr("PLN") }
+                MenuItem { text: qsTr("JPY") }
             }
             onCurrentIndexChanged: {
                 database.storeData("currency", currency.currentIndex, currency.value)

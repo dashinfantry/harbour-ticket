@@ -20,8 +20,6 @@ Page {
 
     property string timeIsExpired: "Please, refresh search results"
 
-    property bool _convertPrice: false
-    property string _selectedCurrency
 
     QtObject {
         id: internal
@@ -29,10 +27,12 @@ Page {
         property bool searchInProgress: false
         property int numberOfTickets: 0
         property variant currencyRates: ({})
+        property bool convertPrice: false
+        property string selectedCurrency
 
         function getPrice(value, unifiedValue, currencyName) {
-            if (database.convertCurrency) {
-                return (unifiedValue/internal.currencyRates[database.currency]).toFixed(0) + " " + database.currency.toUpperCase()
+            if (internal.convertPrice) {
+                return (unifiedValue/internal.currencyRates[internal.selectedCurrency]).toFixed(0) + " " + internal.selectedCurrency.toUpperCase()
             } else {
                 return value + " " + currencyName.toUpperCase()
             }
@@ -87,7 +87,7 @@ Page {
             var parsed = JSON.parse(data)
             if (parsed.meta.uuid) {
 //                console.log(JSON.stringify(parsed))
-                currencyRates = parsed.currency_rates
+//                currencyRates = parsed.currency_rates
 //                console.log(JSON.stringify(currencyRates))
                 uuid = parsed.meta.uuid
                 var url = "http://api.travelpayouts.com/v1/flight_search_results?uuid=" + uuid
@@ -126,8 +126,8 @@ Page {
             internal.searchInProgress = true
         }
 
-        _convertPrice = database.convertCurrency
-        _selectedCurrency = database.currency
+        internal.convertPrice = database.convertCurrency
+        internal.selectedCurrency = database.currency
     }
 
     Component.onDestruction: {

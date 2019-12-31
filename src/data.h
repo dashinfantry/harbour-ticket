@@ -18,7 +18,7 @@ class AirportInfo: public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QJsonObject data READ data)
+    Q_PROPERTY(QJsonObject data READ data NOTIFY dataChanged)
 
 public:
     explicit AirportInfo(const int error);
@@ -31,6 +31,9 @@ public:
 
     void setError(int error);
 
+signals:
+    void dataChanged();
+
 private:
     int m_error { 0 };
     QJsonObject m_obj;
@@ -40,7 +43,7 @@ class TicketInfo: public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QJsonObject data READ data)
+    Q_PROPERTY(QJsonObject data READ data NOTIFY dataChanged)
 
 public:
     explicit TicketInfo(const QJsonObject value);
@@ -48,6 +51,9 @@ public:
     QJsonObject data() const { return m_obj; }
 
     void setVal(const QJsonObject &value);
+
+signals:
+    void dataChanged();
 
 private:
     QJsonObject m_obj;

@@ -10,7 +10,7 @@ Dialog {
     property string currentIp
 
     property int passengers: 2
-    property int childrens: 0
+    property int children: 0
     property bool direct: false
     property string departureDateValue: qsTr("Select")
     property date departureSelectedDate: new Date()
@@ -269,7 +269,6 @@ Dialog {
                             passengers = passengers - 1
                         }
                         adultsCount.text = passengers
-                        console.log(passengers)
                     }
                 }
                 Label {
@@ -288,30 +287,28 @@ Dialog {
                             passengers = passengers + 1
                         }
                         adultsCount.text = passengers
-                        console.log(passengers)
                     }
                 }
             }
             SectionHeader {
-                text: qsTr("Childrens count")
+                text: qsTr("Children count")
             }
             Row {
-                id: numberOfChildrens
+                id: numberOfChildren
 
                 anchors.horizontalCenter: parent.horizontalCenter
                 IconButton {
                     icon.source: "image://theme/icon-m-remove"
                     onClicked: {
-                        childrens = parseInt(childrensCount.text)
-                        if (childrens > 1) {
-                            childrens = childrens - 1
+                        children = parseInt(childrenCount.text)
+                        if (children > 1) {
+                            children = children - 1
                         }
-                        childrensCount.text = childrens
-                        console.log(childrens)
+                        childrenCount.text = children
                     }
                 }
                 Label {
-                    id: childrensCount
+                    id: childrenCount
 
                     anchors.verticalCenter: parent.verticalCenter
                     width: parent.width * 0.25
@@ -321,12 +318,11 @@ Dialog {
                 IconButton {
                     icon.source: "image://theme/icon-m-add"
                     onClicked: {
-                        childrens = parseInt(childrensCount.text)
-                        if (childrens < 10) {
-                            childrens = childrens + 1
+                        children = parseInt(childrenCount.text)
+                        if (children < 10) {
+                            children = children + 1
                         }
-                        childrensCount.text = childrens
-                        console.log(childrens)
+                        childrenCount.text = children
                     }
                 }
             }
@@ -369,11 +365,11 @@ Dialog {
         postParms.user_ip = currentIp
         postParms.locale = database.language.toLowerCase()
         postParms.trip_class = seat
-        postParms.passengers = {"adults": passengers, "children": childrens, "infants": 0}
+        postParms.passengers = {"adults": passengers, "children": children, "infants": 0}
         postParms.segments = []
-        console.log("Model count", segmentsModel.count)
+//        console.log("Model count", segmentsModel.count)
         for (var i = 0; i < segmentsModel.count; i++) {
-            console.log("Add segment", JSON.stringify(segmentsModel.get(i)))
+//            console.log("Add segment", JSON.stringify(segmentsModel.get(i)))
             postParms.segments.push({"origin": segmentsModel.get(i).originIata, "destination": segmentsModel.get(i).destinationIata, "date": Utils.getFullDate(segmentsModel.get(i).date)})
         }
 
@@ -382,13 +378,13 @@ Dialog {
 //            postParms.segments.push({"origin": destination, "destination": origin, "date": Utils.getFullDate(returnSelectedDate)})
 //        }
 
-        console.log(JSON.stringify(postParms))
+//        console.log(JSON.stringify(postParms))
         var s = Utils.createMD5(postParms)
         postParms.signature = s
 
         app.newSearchAllowed = false
 
-        console.log("postParams", JSON.stringify(postParms))
+//        console.log("postParams", JSON.stringify(postParms))
         pageStack.push(Qt.resolvedUrl("../pages/SearchResultsPage.qml"), {searchUrl: url, searchParams: postParms})
     }
 }

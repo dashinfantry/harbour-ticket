@@ -12,47 +12,47 @@
     <name>ComplexSearchDialog</name>
     <message>
         <source>Select</source>
-        <translation type="unfinished">Выбрать</translation>
+        <translation>Выбрать</translation>
     </message>
     <message>
         <source>Econom class</source>
-        <translation type="unfinished">Эконом класс</translation>
+        <translation>Эконом класс</translation>
     </message>
     <message>
         <source>Busines class</source>
-        <translation type="unfinished">Бизнесс класс</translation>
+        <translation>Бизнесс класс</translation>
     </message>
     <message>
         <source>Origin:</source>
-        <translation type="unfinished">Откуда:</translation>
+        <translation>Откуда:</translation>
     </message>
     <message>
         <source>Destination:</source>
-        <translation type="unfinished">Куда:</translation>
+        <translation>Куда:</translation>
     </message>
     <message>
         <source>Departure date:</source>
-        <translation type="unfinished">Дата вылета:</translation>
+        <translation>Дата вылета:</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation type="unfinished">Поиск</translation>
+        <translation>Поиск</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">Отмена</translation>
+        <translation>Отмена</translation>
     </message>
     <message>
         <source>Adults count</source>
         <translation>Кол-во взрослых</translation>
     </message>
     <message>
-        <source>Childrens count</source>
-        <translation>Кол-во детей</translation>
-    </message>
-    <message>
         <source>Trip class:</source>
         <translation>Класс места:</translation>
+    </message>
+    <message>
+        <source>Children count</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -253,6 +253,30 @@
         <source>Open links in browser</source>
         <translation>Открывать ссылки в браузере</translation>
     </message>
+    <message>
+        <source>SEK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CNY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GBP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CZK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PLN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>JPY</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StartPage</name>
@@ -318,6 +342,33 @@
     </message>
 </context>
 <context>
+    <name>TicketDelegate</name>
+    <message>
+        <source>&lt;b&gt;Flight number:&lt;/b&gt; </source>
+        <translation>&lt;b&gt;Номер рейса:&lt;/b&gt; </translation>
+    </message>
+    <message>
+        <source>&lt;br&gt;&lt;b&gt;Aircraft:&lt;/b&gt; </source>
+        <translation>&lt;br&gt;&lt;b&gt;Самолёт:&lt;/b&gt; </translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Trip duration:&lt;/b&gt;&lt;br&gt;</source>
+        <translation>&lt;b&gt;Время полёта:&lt;/b&gt;&lt;br&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Time to wait:&lt;/b&gt; </source>
+        <translation>&lt;b&gt;Время ожидания:&lt;/b&gt; </translation>
+    </message>
+    <message>
+        <source>Baggage: </source>
+        <translation>Багаж: </translation>
+    </message>
+    <message>
+        <source>Handbags: </source>
+        <translation>Ручная кладь: </translation>
+    </message>
+</context>
+<context>
     <name>TicketInfoDelegate</name>
     <message>
         <source>Direct</source>
@@ -338,34 +389,6 @@
         <source>Buy</source>
         <translation>Купить</translation>
     </message>
-    <message>
-        <source>&lt;b&gt;Flight number:&lt;/b&gt; </source>
-        <translation>&lt;b&gt;Номер рейса:&lt;/b&gt; </translation>
-    </message>
-    <message>
-        <source>&lt;br&gt;&lt;b&gt;Aircraft:&lt;/b&gt; </source>
-        <translation>&lt;br&gt;&lt;b&gt;Борт:&lt;/b&gt; </translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Origin:&lt;/b&gt; </source>
-        <translation>&lt;b&gt;Откуда:&lt;/b&gt; </translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Depature:&lt;/b&gt; </source>
-        <translation>&lt;b&gt;Отправление:&lt;/b&gt; </translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Destination:&lt;/b&gt; </source>
-        <translation>&lt;b&gt;Куда:&lt;/b&gt; </translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Arrival:&lt;/b&gt; </source>
-        <translation>&lt;b&gt;Прибытие:&lt;/b&gt; </translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Trip duration:&lt;/b&gt; </source>
-        <translation>&lt;b&gt;Продолжительность:&lt;/b&gt; </translation>
-    </message>
 </context>
 <context>
     <name>Utils</name>
@@ -376,6 +399,35 @@
     <message>
         <source> m</source>
         <translation> м</translation>
+    </message>
+    <message>
+        <source>luggage is not included in price</source>
+        <translation>в стоимость не включено</translation>
+    </message>
+    <message>
+        <source>No information about luggage</source>
+        <translation>нет информации о багаже</translation>
+    </message>
+    <message>
+        <source>no luggage</source>
+        <translation>Без багажа</translation>
+    </message>
+    <message>
+        <source> kg</source>
+        <translation> кг</translation>
+    </message>
+    <message>
+        <source> luggage(s)
+ of </source>
+        <translation> багаж </translation>
+    </message>
+    <message>
+        <source> luggage</source>
+        <translation> багаж</translation>
+    </message>
+    <message>
+        <source>luggage of </source>
+        <translation>вес багажа</translation>
     </message>
 </context>
 </TS>
